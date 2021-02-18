@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5f11bb09-49d2-42b4-9ef1-81815722e613" name="AWS Tomcat EC2 Server" url="http://3.15.178.122:8080">
+        <fileTransfer rootFolder="/var/lib/tomcat/webapps" accessType="SFTP" host="18.220.210.86" port="22" sshConfigId="a6d7e640-5b08-4edf-92da-66ead141c5d3" sshConfig="ec2-user@18.220.210.86:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

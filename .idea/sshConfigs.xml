@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="18.220.210.86" id="a6d7e640-5b08-4edf-92da-66ead141c5d3" keyPath="C:\Users\quent\Downloads\tomcatserverkey.pem" port="22" nameFormat="DESCRIPTIVE" username="ec2-user" />
+    </configs>
+  </component>
+</project>
