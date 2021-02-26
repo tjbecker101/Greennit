@@ -16,7 +16,7 @@ public class DatabaseConnection {
         String password = "";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://database-1.cf1ohk6cad1q.us-east-2.rds.amazonaws.com:3306";
+            String url = "jdbc:mysql://database-1.cf1ohk6cad1q.us-east-2.rds.amazonaws.com:3306/greennit";
             connection = DriverManager.getConnection(url,user,password);
             if(connection != null){
                 System.out.println("Success");
@@ -41,7 +41,7 @@ public class DatabaseConnection {
     //Testing the connection to the server
     public static void main(String[] args) throws SQLException {
         DatabaseConnection connection = new DatabaseConnection();
-        ResultSet result = connection.query("select * from example;");
-        System.out.println(result.first());
+        ResultSet result = connection.query("select * from users;");
+        //System.out.println(result.first());
     }
 }
