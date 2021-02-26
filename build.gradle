@@ -10,6 +10,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    compile files("lib/mysql-connector-java-8.0.22.jar")
+}
+
 
 
 task explodedWar(type: Sync) {
