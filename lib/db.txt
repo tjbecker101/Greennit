@@ -1,0 +1,22 @@
+posts
+author varchar(30) not null
+content text not null
+time_posted datetime not null
+likes int null
+
+subgreennits
+name varchar(255) not null
+description tinytext null
+
+threads
+title varchar(255) not null
+author varchar(30) not null
+content text not null
+creation_date datetime not null
+
+users
+id int auto_increment
+permission int not null
+email varchar(100) null
+username varchar(30) not null
+pass char(128) not null
