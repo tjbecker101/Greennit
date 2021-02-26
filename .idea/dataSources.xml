@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@database-1.cf1ohk6cad1q.us-east-2.rds.amazonaws.com" uuid="e2146580-2b3a-4146-a55f-4761580af1f4">
-      <driver-ref>mariadb</driver-ref>
+    <data-source source="LOCAL" name="Greennit" uuid="e0035b65-e95c-4d73-b0b0-3fa49cd7afa6">
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://database-1.cf1ohk6cad1q.us-east-2.rds.amazonaws.com:3306</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://database-1.cf1ohk6cad1q.us-east-2.rds.amazonaws.com:3306</jdbc-url>
     </data-source>
   </component>
 </project>
