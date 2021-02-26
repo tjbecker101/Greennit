@@ -1,4 +1,4 @@
-package com.greennit.CS3141;
+package com.greennit.CS3141.testPage;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

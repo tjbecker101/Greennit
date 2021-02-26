@@ -1,4 +1,4 @@
-package com.greennit.CS3141;
+package com.greennit.CS3141.testPage;
 
 import java.io.*;
 import javax.servlet.http.*;
