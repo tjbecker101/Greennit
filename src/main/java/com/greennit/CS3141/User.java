@@ -24,7 +24,7 @@ public class User{
      * @return - karma for the user
      */
     public int getKarma(String username){
-        String data = database.query("select karma from users where username = " + username + ";", true, "karma");
+        String data = database.query("select karma from users where username=" + username + ";", true, "karma");
         return Integer.parseInt(data);
     }
 
@@ -50,7 +50,7 @@ public class User{
      * @return - Simple string saying it is complete
      */
     public String changePassword(String password){
-        database.query("update users set password = " + password + " where username = " + username + ";", false, null);
+        database.query("update users set password=" + password + " where username=" + username + ";", false, null);
         return "Password Change Complete";
     }
 
@@ -59,7 +59,7 @@ public class User{
      */
     public void deleteAccount(){
         logout();
-        database.query("delete from users where username = " + username + ";", false, null);
+        database.query("delete from users where username=" + username + ";", false, null);
     }
 
     public void logout(){
