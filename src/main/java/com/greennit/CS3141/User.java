@@ -1,15 +1,12 @@
 package com.greennit.CS3141;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 /**
  * This user class allows one to create posts, edit or delete existing posts, as well as create a new subgreenit.
  * The user can also logout, change password, or delete their account with this class
  */
 public class User{
+
+    DatabaseConnection database = new DatabaseConnection();
 
     private String username;
     private int karma;
@@ -27,7 +24,8 @@ public class User{
      * @return - karma for the user
      */
     private int getKarma(String username){
-        return 0;
+        String data = database.query("select karma from users where username = " + username + ";", true, "karma");
+        return Integer.parseInt(data);
     }
 
     private void createPost(Post post){
@@ -46,12 +44,22 @@ public class User{
 
     }
 
+    /**
+     * Changes the users password
+     * @param password - the new password they want to change it to
+     * @return - Simple string saying it is complete
+     */
     private String changePassword(String password){
-        return null;
+        database.query("update users set password = " + password + " where username = " + username + ";", false, null);
+        return "Password Change Complete";
     }
 
+    /**
+     * Performs a query to delete a user from the database
+     */
     private void deleteAccount(){
-
+        logout();
+        database.query("delete from users where username = " + username + ";", false, null);
     }
 
     private void logout(){
