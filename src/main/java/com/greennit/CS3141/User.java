@@ -12,7 +12,7 @@ public class User{
     private int karma;
     private String password;
 
-    private User(String username, String password){
+    public User(String username, String password){
         this.username = username;
         karma = getKarma(username);
         this.password = password;
@@ -23,24 +23,24 @@ public class User{
      * @param username - key for the database to get the karma
      * @return - karma for the user
      */
-    private int getKarma(String username){
+    public int getKarma(String username){
         String data = database.query("select karma from users where username = " + username + ";", true, "karma");
         return Integer.parseInt(data);
     }
 
-    private void createPost(Post post){
+    public void createPost(Post post){
 
     }
 
-    private void editPost(Post post){
+    public void editPost(Post post){
 
     }
 
-    private void deletePost(Post post) {
+    public void deletePost(Post post) {
 
     }
 
-    private void createSubgreenit(String name){
+    public void createSubgreenit(String name){
 
     }
 
@@ -49,7 +49,7 @@ public class User{
      * @param password - the new password they want to change it to
      * @return - Simple string saying it is complete
      */
-    private String changePassword(String password){
+    public String changePassword(String password){
         database.query("update users set password = " + password + " where username = " + username + ";", false, null);
         return "Password Change Complete";
     }
@@ -57,12 +57,12 @@ public class User{
     /**
      * Performs a query to delete a user from the database
      */
-    private void deleteAccount(){
+    public void deleteAccount(){
         logout();
         database.query("delete from users where username = " + username + ";", false, null);
     }
 
-    private void logout(){
+    public void logout(){
 
     }
 
