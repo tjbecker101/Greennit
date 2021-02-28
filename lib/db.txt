@@ -1,22 +1,29 @@
 posts
-author          varchar(30)     not null
-content         text            not null
-time_posted     timestamp       not null
+host_thread      int             not null
+post_id          int             auto_increment
+author           varchar(30)     not null
+content          text            not null
+time_posted      timestamp       not null
 likes int null
-
-subgreennits
-name            varchar(255)    not null
-description     tinytext        null
+host_thread      references      threads(thread_id)
 
 threads
-title           varchar(255)    not null
-author          varchar(30)     not null
-content         text            not null
-creation_date   timestamp       not null
+host_subgreennit int             not null
+thread_id        int             auto_increment
+title            varchar(255)    not null
+author           varchar(30)     not null
+content          text            not null
+creation_date    timestamp       not null
+host_subgreennit references      subgreennits(subgreennit_id)
+
+subgreennits
+subgreennit_id   int             auto_increment
+name             varchar(255)    not null
+description      tinytext        null
 
 users
-username        varchar(30)     not null
-permission      int             not null
-email           varchar(100)    null
-pass            char(128)       not null
-karma           int             null
+username         varchar(30)     not null
+permission       int             not null
+email            varchar(100)    null
+pass             char(128)       not null
+karma            int             null
