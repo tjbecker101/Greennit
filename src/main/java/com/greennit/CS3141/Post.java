@@ -37,7 +37,6 @@ public class Post {
         this.host_thread = host_thread;
     }
 
-
     public int getPost_id() {
         return post_id;
     }
