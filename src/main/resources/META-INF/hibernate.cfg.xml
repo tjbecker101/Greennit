@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/bookstore</property>
+        <property name="connection.username">admin</property>
+        <property name="connection.password">pwd</property>
+        <property name="show_sql">true</property>
+
+        <mapping class="com.greennit.CS3141.Post" />
+        <mapping class="com.greennit.CS3141.Subgreennit" />
+        <mapping class="com.greennit.CS3141.User" />
+        <mapping class="com.greennit.CS3141.Thread" />
+
+    </session-factory>
+</hibernate-configuration>
