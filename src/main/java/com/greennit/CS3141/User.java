@@ -6,30 +6,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "users")
+
 /**
  * This user class allows one to create posts, edit or delete existing posts, as well as create a new subgreenit.
  * The user can also logout, change password, or delete their account with this class
  */
+@Entity
+@Table(name = "users")
 public class User{
+
     @Id
     @Column(name = "username")
     private String username;
+
+    @Column(name = "permission")
     private int permission;
+    @Column(name = "email")
     private String email;
+    @Column(name = "pass")
     private String pass;
+    @Column(name = "karma")
     private int karma;
 
     public User(){
     }
 
-    public User(String username, String pass, String email){
-        this.username = username;
-        this.pass = pass;
-        this.email = email;
-        karma = 0;
-        permission = 1;
+    public boolean validAccount(String password){
+        return false;
     }
 
     public void createPost(){
