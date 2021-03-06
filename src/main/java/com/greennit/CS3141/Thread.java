@@ -1,12 +1,9 @@
 package com.greennit.CS3141;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
+
 
 @Entity
 @Table(name = "threads")
@@ -15,14 +12,12 @@ import java.sql.Timestamp;
  * The subgreennit the thread is on, the id of the thread, the title and author of the thread,
  * the content of the thread, and the time the thread was created.
  */
-public class Thread {
+public class Thread implements Serializable {
     @Id
-    @Column(name = "host_subgreennit")
     private int host_subgreennit;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "thread_id")
     private int thread_id;
 
     private String title;
@@ -31,6 +26,11 @@ public class Thread {
     private Timestamp creation_date;
 
     public Thread() {
+    }
+
+    public Thread(int host_subgreennit, int thread_id) {
+        this.host_subgreennit = host_subgreennit;
+        this.thread_id = thread_id;
     }
 
     // region getters and setters
@@ -80,5 +80,5 @@ public class Thread {
     }
 
     // endregion
-
 }
+
