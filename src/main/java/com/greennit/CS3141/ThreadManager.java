@@ -46,7 +46,7 @@ public class ThreadManager {
     public void createThread(int host_subgreennit, String author, String content, Timestamp creation_date) {
         // Create a new thread
         Thread thread = new Thread();
-        //thread.setHost_subgreennit(host_subgreennit);
+        thread.setHost_subgreennit(host_subgreennit);
         thread.setAuthor(author);
         thread.setContent(content);
         thread.setCreation_date(creation_date);
