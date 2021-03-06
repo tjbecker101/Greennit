@@ -18,7 +18,6 @@ public class User{
     @Id
     @Column(name = "username")
     private String username;
-
     @Column(name = "permission")
     private int permission;
     @Column(name = "email")
@@ -31,8 +30,18 @@ public class User{
     public User(){
     }
 
-    public boolean validAccount(String password){
-        return false;
+    /**
+     * Called for a new user
+     * @param username - the username they wish to have
+     * @param pass - the password the user wishes to have
+     * @param email - the email the user will link to the account
+     */
+    public User(String username, String pass, String email){
+        setUsername(username);
+        setPass(pass);
+        setEmail(email);
+        setPermission(1);
+        setKarma(0);
     }
 
     public void createPost(){

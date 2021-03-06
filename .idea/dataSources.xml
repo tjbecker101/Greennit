@@ -5,7 +5,17 @@
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://database-1.cf1ohk6cad1q.us-east-2.rds.amazonaws.com:3306/</jdbc-url>
+      <jdbc-url>jdbc:mariadb://database-1.cf1ohk6cad1q.us-east-2.rds.amazonaws.com:3306/greennit</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="META-INF:hibernate.cfg.xml/Hibernate" uuid="033805e0-5480-466e-a588-eee5fc61c4a3">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/Users/tyler/IdeaProjects/CS3141/src/main/resources/META-INF/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>database-1.cf1ohk6cad1q.us-east-2.rds.amazonaws.com/greennit</jdbc-url>
     </data-source>
   </component>
 </project>
