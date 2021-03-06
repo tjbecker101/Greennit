@@ -23,7 +23,7 @@ public class Subgreennit {
     public Subgreennit() {
     }
 
-    //getters and setters
+    // region getters and setters
 
     public int getThread_id() {
         return subgreennit_id;
@@ -61,4 +61,5 @@ public class Subgreennit {
         this.creation_date = creation_date;
     }
 
+    // endregion
 }
