@@ -1,6 +1,7 @@
 package com.greennit.CS3141;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
@@ -10,7 +11,7 @@ import java.sql.Timestamp;
  * The thread the post belongs to, the id of the post, the author and content of the post,
  * the time the post was created, and how many likes the post has.
  */
-public class Post {
+public class Post implements Serializable {
     @Id
     @Column(name = "host_thread")
     private int host_thread;

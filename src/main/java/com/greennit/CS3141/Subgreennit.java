@@ -1,6 +1,7 @@
 package com.greennit.CS3141;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
@@ -8,7 +9,7 @@ import java.sql.Timestamp;
 /*
  * This subgreennit class is used for inserting and retrieving data from a subgreenit
  */
-public class Subgreennit {
+public class Subgreennit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
