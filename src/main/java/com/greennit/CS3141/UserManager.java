@@ -11,10 +11,14 @@ public class UserManager {
     private SessionFactory sessionFactory;
     private Session session;
 
+    public UserManager() {
+        setup();
+    }
+
     /**
      * Creates a connection with the database using hibernate
      */
-    public void setup() {
+    private void setup() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure("META-INF/hibernate.cfg.xml")
                 .build();
@@ -37,9 +41,9 @@ public class UserManager {
      * Used to create a new entry in the database
      * @param username - the username of the new user
      * @param password - the password of the new user
-     * @param email - the email of the new user
+     * @param email    - the email of the new user
      */
-    public void create(String username, String password, String email) {
+    public void createUser(String username, String password, String email) {
         //Creates a user with the provided values
         User user = new User();
         user.setUsername(username);
@@ -51,13 +55,16 @@ public class UserManager {
         //Takes the user we created and puts it into the database as an entry
         session = sessionFactory.openSession();
         session.beginTransaction();
-        session.update(user);
+
+        session.save(user);
+
         session.getTransaction().commit();
         session.close();
     }
 
     /**
      * This will search the database for a user from their username
+     *
      * @param username - used as the primary key in the table and helps us locate the entry in the table
      * @return - returns a user which we can then use to get the information we need
      * @throws IllegalArgumentException - thrown if the user isn't in the table
@@ -76,17 +83,103 @@ public class UserManager {
     }
 
     /**
-     * Used to update a value already in the table, such as changing username, or password, or updating their karma
+     * Updates the given user in the database.
+     * @param user  The user that needs to be updated.
      */
-    public void update() {
+    private void updateUser(User user) {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.update(user);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    /**
+     * Updates the username of a given user.
+     * If oldUsername and newUsername are equal, or if user of newUsername exists, throw IllegalArgumentException.
+     * @param oldUsername                   The original username of the user.
+     * @param newUsername                   The new username of the user.
+     * @throws IllegalArgumentException     If oldUsername = newUsername or if user of newUsername exists.
+     */
+    public void updateUsername(String oldUsername, String newUsername) throws IllegalArgumentException {
+        User user = getUser(oldUsername);
+
+        // User already exists.
+        if (getUser(newUsername).getUsername().equals(newUsername)) {
+            throw new IllegalArgumentException("New username already exists in table.");
+        }
+        // New username is same as old username.
+        if (newUsername.equals(oldUsername)) {
+            throw new IllegalArgumentException("Old username and new username cannot be the same.");
+        }
+
+        user.setUsername(newUsername);
+
+        updateUser(user);
 
     }
 
     /**
+     * Updates the password of a given user.
+     * @param username  The username to change the password of.
+     * @param password  The new password to be changed to.
+     */
+    public void updatePassword(String username, String password) {
+        User user = getUser(username);
+
+        user.setPass(password);
+
+        updateUser(user);
+    }
+
+    /**
+     * Updates the email of a given user.
+     * @param username  The username to change the email of.
+     * @param email     The new email to be changed to.
+     */
+    public void updateEmail(String username, String email) {
+        User user = getUser(username);
+
+        user.setEmail(email);
+
+        updateUser(user);
+    }
+
+    /**
+     * Updates the permission level of a given user.
+     * @param username      The username to change the permission of.
+     * @param permission    The new permission to be changed to.
+     */
+    public void updatePermission(String username, int permission) {
+        User user = getUser(username);
+
+        user.setPermission(permission);
+
+        updateUser(user);
+    }
+
+    /**
+     * Updates the karma of a given user.
+     * @param username  The username to change the karma of.
+     * @param karma     The new karma to be changed to.
+     */
+    public void updateKarma(String username, int karma) {
+        User user = getUser(username);
+
+        user.setKarma(karma);
+
+        updateUser(user);
+    }
+
+
+    /**
      * Will remove a user from the table and as a result delete their account
+     *
      * @param username - the username of the one to be deleted
      */
-    public void delete(String username) {
+    public void deleteUser(String username) {
 
         User user = new User();
         user.setUsername(username);
