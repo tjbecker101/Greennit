@@ -10,41 +10,43 @@ public class Test_User {
 
     UserManager manager;
     User user;
+    String username;
 
     @Before
     public void start() {
         manager = new UserManager();
         manager.setup();
+        username = "tjbecker";
     }
 
     //Tests the getters
     @Test
     public void checkForUsername() {
-        user = manager.read();
+        user = manager.getUser(username);
         assertEquals("tjbecker", user.getUsername());
     }
 
     @Test
     public void checkForEmail(){
-        user = manager.read();
-        assertEquals("123", user.getEmail());
+        user = manager.getUser(username);
+        assertEquals("123@idk.com", user.getEmail());
     }
 
     @Test
     public void checkforKarma(){
-        user = manager.read();
+        user = manager.getUser(username);
         assertEquals(2, user.getKarma());
     }
 
     @Test
     public void checkForPermission(){
-        user = manager.read();
+        user = manager.getUser(username);
         assertEquals(1, user.getPermission());
     }
 
     @Test
     public void checkForPassword(){
-        user = manager.read();
+        user = manager.getUser(username);
         assertEquals("test", user.getPass());
     }
 
