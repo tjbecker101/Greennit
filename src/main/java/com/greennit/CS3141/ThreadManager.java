@@ -44,21 +44,17 @@ public class ThreadManager {
      * @param creation_date     The time the thread was created.
      */
     public void createThread(int host_subgreennit, String author, String content, Timestamp creation_date) {
-        // Create a new thread
         Thread thread = new Thread();
         thread.setHost_subgreennit(host_subgreennit);
         thread.setAuthor(author);
         thread.setContent(content);
         thread.setCreation_date(creation_date);
 
-        // Begin a new SQL transaction
         session = sessionFactory.openSession();
         session.beginTransaction();
 
-        // Push the thread to the database transaction
         session.save(thread);
 
-        // Commit the transaction and close the session.
         session.getTransaction().commit();
         session.close();
     }
@@ -70,17 +66,14 @@ public class ThreadManager {
      * @return                  A thread from the database. May have no content.
      */
     public Thread getThread(int host_subgreennit, int thread_id) throws IllegalArgumentException {
-        // Opens a new SQL session.
         session = sessionFactory.openSession();
 
-        // Gets the thread class from the database.
         Thread thread = session.get(Thread.class, new Thread(host_subgreennit, thread_id));
 
         if (thread.getContent() == null || thread.getContent() == "") {
             throw new IllegalArgumentException("Host Subgreennit or Thread ID provided not valid.");
         }
 
-        // Closes the session and return the thread.
         session.close();
         return thread;
     }
@@ -92,20 +85,15 @@ public class ThreadManager {
      * @param content           The new content for the thread.
      */
     public void updateThreadContent(int host_subgreennit, int thread_id, String content) {
-        // Get the thread from the database.
         Thread thread = getThread(host_subgreennit, thread_id);
 
-        // Update the content of the thread.
         thread.setContent(content);
 
-        // Begin a new SQL transaction.
         session = sessionFactory.openSession();
         session.beginTransaction();
 
-        // Update the entry in the database.
         session.update(thread);
 
-        // Commit the transaction and close the session.
         session.getTransaction().commit();
         session.close();
 
@@ -117,17 +105,13 @@ public class ThreadManager {
      * @param thread_id         The ID of the thread.
      */
     public void deleteThread(int host_subgreennit, int thread_id) {
-        // Get the thread from the database.
         Thread thread = getThread(host_subgreennit, thread_id);
 
-        // Begin a new SQL transaction.
         session = sessionFactory.openSession();
         session.beginTransaction();
 
-        // Delete the thread from the database.
         session.delete(thread);
 
-        // Commit the transaction and close the session.
         session.getTransaction().commit();
         session.close();
     }
