@@ -26,7 +26,13 @@ public class Post implements Serializable {
     private Timestamp creation_date;
     private int likes;
 
-    public Post() {
+    public Post(){
+
+    }
+
+    public Post(int host_thread, int post_id) {
+        this.host_thread = host_thread;
+        this.post_id = post_id;
     }
 
     // region getters and setters
