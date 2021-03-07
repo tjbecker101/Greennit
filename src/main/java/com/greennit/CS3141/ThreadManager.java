@@ -70,7 +70,7 @@ public class ThreadManager {
 
         Thread thread = session.get(Thread.class, new Thread(host_subgreennit, thread_id));
 
-        if (thread.getContent() == null || thread.getContent() == "") {
+        if (thread.getContent() == null || thread.getContent().equals("")) {
             throw new IllegalArgumentException("Host Subgreennit or Thread ID provided not valid.");
         }
 
