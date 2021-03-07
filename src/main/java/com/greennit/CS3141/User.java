@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
 
 
 /**
@@ -18,83 +17,12 @@ public class User{
     @Id
     @Column(name = "username")
     private String username;
-    @Column(name = "permission")
     private int permission;
-    @Column(name = "email")
     private String email;
-    @Column(name = "pass")
     private String pass;
-    @Column(name = "karma")
     private int karma;
 
     public User(){
-    }
-
-    /**
-     * Called for a new user
-     * @param username - the username they wish to have
-     * @param pass - the password the user wishes to have
-     * @param email - the email the user will link to the account
-     */
-    public User(String username, String pass, String email){
-        setUsername(username);
-        setPass(pass);
-        setEmail(email);
-        setPermission(1);
-        setKarma(0);
-    }
-
-    public void createPost(){
-        Post post = new Post();
-        post.setAuthor(username);
-        post.setLikes(0);
-        post.setContent("placeholder");
-        post.setCreation_date(new Timestamp(System.currentTimeMillis()));
-        post.setHost_thread(-1);
-    }
-
-    public void editPost(Post post){
-        post.setCreation_date(new Timestamp(System.currentTimeMillis()));
-        post.setContent("placeholder");
-    }
-
-    public void deletePost(Post post) {
-        post.setContent(null);
-        post.setCreation_date(null);
-        post.setHost_thread(-1);
-        post.setAuthor(null);
-        post.setLikes(-1);
-    }
-
-    public void createSubgreenit(String name){
-        Subgreennit sub = new Subgreennit();
-        sub.setAuthor(username);
-        sub.setContent("placeholder");
-        sub.setCreation_date(new Timestamp(System.currentTimeMillis()));
-        sub.setTitle(name);
-    }
-
-    /**
-     * Changes the users password
-     * @param password - the new password they want to change it to
-     * @return - Simple string saying it is complete
-     */
-    public String changePassword(String password){
-        pass = password;
-        //database.query("update users set password=" + password + " where username=" + username + ";", false, null);
-        return "Password Change Complete";
-    }
-
-    /**
-     * Performs a query to delete a user from the database
-     */
-    public void deleteAccount(){
-        logout();
-        //database.query("delete from users where username=" + username + ";", false, null);
-    }
-
-    public void logout(){
-
     }
 
 
@@ -132,5 +60,66 @@ public class User{
         return karma;
     }
 
+    /*
+     * Called for a new user
+     * @param username - the username they wish to have
+     * @param pass - the password the user wishes to have
+     * @param email - the email the user will link to the account
+
+
+    public User(String username, String pass, String email){
+        setUsername(username);
+        setPass(pass);
+        setEmail(email);
+        setPermission(1);
+        setKarma(0);
+    }
+    public void createPost(){
+        Post post = new Post();
+        post.setAuthor(username);
+        post.setLikes(0);
+        post.setContent("placeholder");
+        post.setCreation_date(new Timestamp(System.currentTimeMillis()));
+        post.setHost_thread(-1);
+    }
+
+    public void editPost(Post post){
+        post.setCreation_date(new Timestamp(System.currentTimeMillis()));
+        post.setContent("placeholder");
+    }
+
+    public void deletePost(Post post) {
+        post.setContent(null);
+        post.setCreation_date(null);
+        post.setHost_thread(-1);
+        post.setAuthor(null);
+        post.setLikes(-1);
+    }
+
+    public void createSubgreenit(String name){
+        Subgreennit sub = new Subgreennit();
+        sub.setAuthor(username);
+        sub.setContent("placeholder");
+        sub.setCreation_date(new Timestamp(System.currentTimeMillis()));
+        sub.setTitle(name);
+    }
+
+    public String changePassword(String password){
+        pass = password;
+        //database.query("update users set password=" + password + " where username=" + username + ";", false, null);
+        return "Password Change Complete";
+    }
+
+
+    public void deleteAccount(){
+        logout();
+        //database.query("delete from users where username=" + username + ";", false, null);
+    }
+
+    public void logout(){
+
+    }
+
+    */
 
 }
