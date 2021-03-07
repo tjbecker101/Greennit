@@ -10,13 +10,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile files("lib/mysql-connector-java-8.0.22.jar")
-    compile files("lib/hibernate-core-5.4.28.Final.jar")
-}
-
-
-
 task explodedWar(type: Sync) {
     into "${buildDir}/exploded"
     with war
@@ -35,6 +28,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation 'junit:junit:4.12'
+
+    compile files("lib/mysql-connector-java-8.0.22.jar")
+
+    implementation 'org.hibernate:hibernate-gradle-plugin:5.4.28.Final'
 }
 
 test {
