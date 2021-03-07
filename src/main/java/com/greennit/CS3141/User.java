@@ -28,7 +28,7 @@ public class User implements Serializable {
 
 
     /*
-    Getters and Setters for global variables
+    Getters and Setters which will be used to set and get values from the database
      */
     public void setUsername(String username){
         this.username = username;

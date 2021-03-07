@@ -15,7 +15,6 @@ public class Test_User {
     @Before
     public void start() {
         manager = new UserManager();
-        manager.setup();
         username = "tjbecker";
     }
 
