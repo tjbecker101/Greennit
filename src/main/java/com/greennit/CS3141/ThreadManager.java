@@ -21,7 +21,11 @@ public class ThreadManager {
         setup();
     }
 
-    public void setup() {
+    /**
+     * Initializes the necessary components needed for
+     * the sessionFactory to operate.
+     */
+    private void setup() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure()
                 .build();
@@ -32,6 +36,9 @@ public class ThreadManager {
         }
     }
 
+    /**
+     * Closes the sessionFactory and, as a result, any ThreadManager executions.
+     */
     public void exit() {
         sessionFactory.close();
     }
