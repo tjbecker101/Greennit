@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 
+
+
+
 @Entity
 @Table(name = "threads")
 /*
@@ -14,23 +17,17 @@ import java.sql.Timestamp;
  */
 public class Thread implements Serializable {
     @Id
-    private int host_subgreennit;
-
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int thread_id;
+    @Column(name = "id")
+    private int id;
 
+    private int host_subgreennit;
     private String title;
     private String author;
     private String content;
     private Timestamp creation_date;
 
     public Thread() {
-    }
-
-    public Thread(int host_subgreennit, int thread_id) {
-        this.host_subgreennit = host_subgreennit;
-        this.thread_id = thread_id;
     }
 
     // region getters and setters
@@ -43,8 +40,8 @@ public class Thread implements Serializable {
         this.host_subgreennit = host_subgreennit;
     }
 
-    public int getThread_id() {
-        return thread_id;
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {

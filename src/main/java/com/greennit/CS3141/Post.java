@@ -12,27 +12,22 @@ import java.sql.Timestamp;
  * the time the post was created, and how many likes the post has.
  */
 public class Post implements Serializable {
-    @Id
-    @Column(name = "host_thread")
-    private int host_thread;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="post_id")
-    private int post_id;
+    @Column(name="id")
+    private int id;
 
+    private int host_thread;
     private String author;
     private String content;
     private Timestamp creation_date;
     private int likes;
+    private int parent_id;
 
     public Post(){
 
-    }
-
-    public Post(int host_thread, int post_id) {
-        this.host_thread = host_thread;
-        this.post_id = post_id;
     }
 
     // region getters and setters
@@ -44,8 +39,8 @@ public class Post implements Serializable {
         this.host_thread = host_thread;
     }
 
-    public int getPost_id() {
-        return post_id;
+    public int getId() {
+        return id;
     }
 
     public String getAuthor() {
@@ -78,6 +73,14 @@ public class Post implements Serializable {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public int getParent_id() {
+        return parent_id;
+    }
+
+    public void setParent_id(int parent_id) {
+        this.parent_id = parent_id;
     }
 
     // endregion
