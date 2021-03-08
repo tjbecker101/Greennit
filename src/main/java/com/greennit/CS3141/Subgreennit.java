@@ -13,7 +13,7 @@ public class Subgreennit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subgreennit_id")
+    @Column(name = "id")
     private int subgreennit_id;
 
     private String title;
