@@ -68,14 +68,13 @@ public class PostManager {
 
     /**
      * Gets a post existing in the database and returns it.
-     * @param host_thread       The thread where the thread lies.
-     * @param post_id           The ID of the post.
-     * @return                  A post from the database. May have no content.
+     * @param id    The ID of the post.
+     * @return      A post from the database. May have no content.
      */
-    public Post getPost(int host_thread, int post_id) throws IllegalArgumentException {
+    public Post getPost(int id) throws IllegalArgumentException {
         session = sessionFactory.openSession();
 
-        Post post = session.get(Post.class, new Post(host_thread, post_id));
+        Post post = session.get(Post.class, id);
 
         if (post.getContent() == null || post.getContent().equals("")) {
             throw new IllegalArgumentException("Host Thread or Post ID provided not valid.");
@@ -87,12 +86,11 @@ public class PostManager {
 
     /**
      * Updates a post's content in the database.
-     * @param host_thread       The thread where the post lies.
-     * @param post_id           The ID of the post.
-     * @param content           The new content for the post.
+     * @param id        The ID of the post.
+     * @param content   The new content for the post.
      */
-    public void updateThreadContent(int host_thread, int post_id, String content) {
-        Post post = getPost(host_thread, post_id);
+    public void updateThreadContent(int id, String content) {
+        Post post = getPost(id);
 
         post.setContent(content);
 
@@ -108,11 +106,10 @@ public class PostManager {
 
     /**
      * Deletes a thread from the database.
-     * @param host_thread  The thread where the thread lies.
-     * @param post_id         The ID of the post.
+     * @param id    The ID of the post.
      */
-    public void deletePost(int host_thread, int post_id) {
-        Post post = getPost(host_thread, post_id);
+    public void deletePost(int id) {
+        Post post = getPost(id);
 
         session = sessionFactory.openSession();
         session.beginTransaction();
