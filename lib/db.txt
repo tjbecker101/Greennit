@@ -1,6 +1,7 @@
 posts
 host_thread      int             not null
 post_id          int             auto_increment
+host_subgreennit varchar(255)    not null
 author           varchar(30)     not null
 content          text            not null
 time_posted      timestamp       not null
