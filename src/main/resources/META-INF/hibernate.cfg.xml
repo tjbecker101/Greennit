@@ -12,10 +12,11 @@
         <property name="connection.password">pwd</property>
         <property name="show_sql">true</property>
 
-        <mapping class="com.greennit.CS3141.Post" />
-        <mapping class="com.greennit.CS3141.Subgreennit" />
-        <mapping class="com.greennit.CS3141.User" />
-        <mapping class="com.greennit.CS3141.Thread" />
+
+        <mapping class="com.greennit.CS3141.entities.Post" />
+        <mapping class="com.greennit.CS3141.entities.Subgreennit" />
+        <mapping class="com.greennit.CS3141.entities.User" />
+        <mapping class="com.greennit.CS3141.entities.Thread" />
 
     </session-factory>
 </hibernate-configuration>

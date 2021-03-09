@@ -1,5 +1,7 @@
 package com.greennit.CS3141;
 
+import com.greennit.CS3141.entities.Thread;
+import com.greennit.CS3141.managers.ThreadManager;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

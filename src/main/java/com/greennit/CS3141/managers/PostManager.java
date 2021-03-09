@@ -1,5 +1,6 @@
-package com.greennit.CS3141;
+package com.greennit.CS3141.managers;
 
+import com.greennit.CS3141.entities.Post;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.boot.MetadataSources;

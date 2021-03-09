@@ -1,5 +1,7 @@
 package com.greennit.CS3141;
 
+import com.greennit.CS3141.entities.User;
+import com.greennit.CS3141.managers.UserManager;
 import org.junit.*;
 import static org.junit.Assert.assertEquals;
 

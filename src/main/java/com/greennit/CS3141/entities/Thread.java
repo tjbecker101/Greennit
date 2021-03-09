@@ -1,4 +1,4 @@
-package com.greennit.CS3141;
+package com.greennit.CS3141.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
