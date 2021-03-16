@@ -2,7 +2,10 @@ package com.greennit.CS3141;
 
 import com.greennit.CS3141.entities.User;
 import com.greennit.CS3141.managers.UserManager;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -51,49 +54,67 @@ public class Test_User {
         assertEquals("test", user.getPass());
     }
 
+    @Test()
+    public void createAndDeleteAccount(){
+        manager.createUser("createTest", "createTestPass", "createTest@idk.com");
+        user = manager.getUser("createTest");
+        assertEquals("createTest", user.getUsername());
+        manager.deleteUser("createTest");
+        try{
+            manager.getUser("createTest");
+        }catch(IllegalArgumentException ex){
+            assertEquals("Username provided not valid.", ex.getMessage());
+        }
+    }
+
+    @Test
+    public void updateUsername(){
+        manager.createUser("oldUsername", "test", "idk@idk.com");
+        manager.updateUsername("oldUsername", "newUsername");
+        user = manager.getUser("newUsername");
+        assertEquals("newUsername", user.getUsername());
+        manager.deleteUser("newUsername");
+    }
+
+    @Test
+    public void updatePassword(){
+        manager.createUser("username", "oldPassword", "idk@idk.com");
+        manager.updatePassword("username", "newPassword");
+        user = manager.getUser("username");
+        assertEquals("newPassword", user.getPass());
+        manager.deleteUser("username");
+    }
+
+    @Test
+    public void updateKarma(){
+        manager.createUser("username", "oldPassword", "idk@idk.com");
+        manager.updateKarma("username", 123);
+        user = manager.getUser("username");
+        assertEquals(123, user.getKarma());
+        manager.deleteUser("username");
+    }
+
+    @Test
+    public void updatePermission(){
+        manager.createUser("username", "oldPassword", "idk@idk.com");
+        manager.updatePermission("username", 123);
+        user = manager.getUser("username");
+        assertEquals(123, user.getPermission());
+        manager.deleteUser("username");
+    }
+
+    @Test
+    public void updateEmail(){
+        manager.createUser("username", "oldPassword", "oldEmail@idk.com");
+        manager.updateEmail("username", "newEmail@idk.com");
+        user = manager.getUser("username");
+        assertEquals("newEmail@idk.com", user.getEmail());
+        manager.deleteUser("username");
+    }
+
     @After
     public void finish(){
         manager.exit();
     }
-
-    /*Tests putting new values into the database
-    @Test
-    public void checkInsertingUsername(){
-        user = new User("test1","test1", "test1@idk.com");
-        assertEquals("test1", user.getUsername());
-    }
-
-    //Testing the setters
-    @Test
-    public void editPassword(){
-        user.changePassword("test2");
-        assertEquals("test2", user.getPass());
-    }
-
-    @Test
-    public void editEmail(){
-        user.setEmail("test2@idk.com");
-        assertEquals("test2@idk.com", user.getPass());
-    }
-
-    @Test
-    public void editKarma(){
-        user.setKarma(100);
-        assertEquals(100, user.getKarma());
-    }
-
-    @Test
-    public void editUsername() {
-        user.setUsername("rename");
-        assertEquals("rename", user.getUsername());
-    }
-
-    @Test
-    public void editPermission(){
-        user.setPermission(2);
-        assertEquals(2, user.getKarma());
-    }
-
-     */
 
 }

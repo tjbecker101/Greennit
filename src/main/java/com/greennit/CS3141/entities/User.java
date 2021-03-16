@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-
 /**
  * This user class allows one to create posts, edit or delete existing posts, as well as create a new subgreenit.
  * The user can also logout, change password, or delete their account with this class
@@ -25,7 +24,6 @@ public class User implements Serializable {
 
     public User(){
     }
-
 
     /*
     Getters and Setters which will be used to set and get values from the database
@@ -60,67 +58,5 @@ public class User implements Serializable {
     public int getKarma(){
         return karma;
     }
-
-    /*
-     * Called for a new user
-     * @param username - the username they wish to have
-     * @param pass - the password the user wishes to have
-     * @param email - the email the user will link to the account
-
-
-    public User(String username, String pass, String email){
-        setUsername(username);
-        setPass(pass);
-        setEmail(email);
-        setPermission(1);
-        setKarma(0);
-    }
-    public void createPost(){
-        Post post = new Post();
-        post.setAuthor(username);
-        post.setLikes(0);
-        post.setContent("placeholder");
-        post.setCreation_date(new Timestamp(System.currentTimeMillis()));
-        post.setHost_thread(-1);
-    }
-
-    public void editPost(Post post){
-        post.setCreation_date(new Timestamp(System.currentTimeMillis()));
-        post.setContent("placeholder");
-    }
-
-    public void deletePost(Post post) {
-        post.setContent(null);
-        post.setCreation_date(null);
-        post.setHost_thread(-1);
-        post.setAuthor(null);
-        post.setLikes(-1);
-    }
-
-    public void createSubgreenit(String name){
-        Subgreennit sub = new Subgreennit();
-        sub.setAuthor(username);
-        sub.setContent("placeholder");
-        sub.setCreation_date(new Timestamp(System.currentTimeMillis()));
-        sub.setTitle(name);
-    }
-
-    public String changePassword(String password){
-        pass = password;
-        //database.query("update users set password=" + password + " where username=" + username + ";", false, null);
-        return "Password Change Complete";
-    }
-
-
-    public void deleteAccount(){
-        logout();
-        //database.query("delete from users where username=" + username + ";", false, null);
-    }
-
-    public void logout(){
-
-    }
-
-    */
 
 }
