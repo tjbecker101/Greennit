@@ -75,7 +75,7 @@ public class UserManager {
         session = sessionFactory.openSession();
         User user = session.get(User.class, username);
 
-        if (user.getUsername() == null || user.getUsername().equals("")) { //Checks if the username exists or not
+        if (user == null || user.getUsername().equals("")) { //Checks if the username exists or not
             throw new IllegalArgumentException("Username provided not valid.");
         }
 
