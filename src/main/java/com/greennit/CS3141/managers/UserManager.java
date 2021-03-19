@@ -107,18 +107,33 @@ public class UserManager {
     public void updateUsername(String oldUsername, String newUsername) throws IllegalArgumentException {
         User user = getUser(oldUsername);
 
-        // User already exists.
-        if (getUser(newUsername).getUsername().equals(newUsername)) {
-            throw new IllegalArgumentException("New username already exists in table.");
-        }
         // New username is same as old username.
         if (newUsername.equals(oldUsername)) {
             throw new IllegalArgumentException("Old username and new username cannot be the same.");
         }
 
+        // User already exists.
+        try {
+            if (getUser(newUsername).getUsername().equals(newUsername)) {
+                throw new IllegalArgumentException("New username already exists in table.");
+            }
+        } catch(IllegalArgumentException ex){
+            System.out.println("Username is valid");
+        }
+
+        //Deletes the users old data from the database
+        deleteUser(oldUsername);
+        //Takes the saved user info and changes the username to the new one
         user.setUsername(newUsername);
 
-        updateUser(user);
+        //Commits the user back into the database with the new username
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.save(user);
+
+        session.getTransaction().commit();
+        session.close();
 
     }
 
