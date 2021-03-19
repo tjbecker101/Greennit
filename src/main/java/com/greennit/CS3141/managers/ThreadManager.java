@@ -6,8 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /*
  * This class manages the input, reading, deletion, and updating of entities
@@ -85,6 +87,29 @@ public class ThreadManager {
         session.close();
         return thread;
     }
+
+    /**
+     * Prototype method
+     * Gets a list of threads given a filter.
+     * @param filter    The filter to filter through the database with.
+     * @return          A list of threads matching the filter.
+     */
+    public List<Thread> getThreads(String filter) {
+        try {
+            session = sessionFactory.openSession();
+
+            String hql = "from Thread where " + filter;
+            Query<Thread> query = session.createQuery(hql);
+
+            return query.list();
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
 
     /**
      * Updates a thread's content in the database.

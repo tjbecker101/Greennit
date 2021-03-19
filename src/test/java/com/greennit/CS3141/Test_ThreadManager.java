@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,7 +16,7 @@ public class Test_ThreadManager {
 
     Thread thread;
     ThreadManager manager;
-    int ID = 9; // MUST BE UPDATED EVERY TEST. WORKING ON SOLUTION. CURRENT 9
+    int ID = 10; // MUST BE UPDATED EVERY TEST. WORKING ON SOLUTION. CURRENT 10
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
@@ -51,6 +52,21 @@ public class Test_ThreadManager {
 
         exception.expect(NullPointerException.class);
         thread = manager.getThread(ID);
+        ID++;
+    }
+
+    @Test
+    public void checkGetThreads() {
+        List<Thread> threads = manager.getThreads("id=1");
+
+        for (Thread thread : threads) {
+            assertEquals(1, thread.getId());
+            assertEquals(1, thread.getHost_subgreennit());
+            assertEquals("test", thread.getTitle());
+            assertEquals("qcross", thread.getAuthor());
+            assertEquals("testcontent", thread.getContent());
+            assertEquals("2021-03-07 14:16:54.0", thread.getCreation_date().toString());
+        }
     }
 
 }
