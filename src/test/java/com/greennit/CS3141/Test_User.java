@@ -4,7 +4,9 @@ import com.greennit.CS3141.entities.User;
 import com.greennit.CS3141.managers.UserManager;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,6 +18,9 @@ public class Test_User {
     UserManager manager;
     User user;
     String username;
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Before
     public void start() {
@@ -110,6 +115,28 @@ public class Test_User {
         user = manager.getUser("username");
         assertEquals("newEmail@idk.com", user.getEmail());
         manager.deleteUser("username");
+    }
+
+    /*
+    Below tests the throwables in all the methods
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void getUserErrors(){
+        manager.getUser("invalidUsername");
+    }
+
+    @Test()
+    public void updateUserErrors1(){
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("Old username and new username cannot be the same.");
+        manager.updateUsername("tjbecker","tjbecker");
+    }
+
+    @Test()
+    public void updateUserErrors2(){
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("New username already exists in table.");
+        manager.updateUsername("tjbecker","qcross");
     }
 
     @After

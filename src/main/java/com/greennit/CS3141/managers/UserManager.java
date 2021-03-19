@@ -107,6 +107,8 @@ public class UserManager {
     public void updateUsername(String oldUsername, String newUsername) throws IllegalArgumentException {
         User user = getUser(oldUsername);
 
+        boolean valid = true;
+
         // New username is same as old username.
         if (newUsername.equals(oldUsername)) {
             throw new IllegalArgumentException("Old username and new username cannot be the same.");
@@ -115,25 +117,28 @@ public class UserManager {
         // User already exists.
         try {
             if (getUser(newUsername).getUsername().equals(newUsername)) {
-                throw new IllegalArgumentException("New username already exists in table.");
+                valid = false;
             }
-        } catch(IllegalArgumentException ex){
-            System.out.println("Username is valid");
+        } catch(IllegalArgumentException ex){ //Catches if the username was not in the table due to error checking in getUser
+            System.out.println("Valid Username");
         }
+        if(valid) { //checks if the user was found or not
+            //Deletes the users old data from the database
+            deleteUser(oldUsername);
+            //Takes the saved user info and changes the username to the new one
+            user.setUsername(newUsername);
 
-        //Deletes the users old data from the database
-        deleteUser(oldUsername);
-        //Takes the saved user info and changes the username to the new one
-        user.setUsername(newUsername);
+            //Commits the user back into the database with the new username
+            session = sessionFactory.openSession();
+            session.beginTransaction();
 
-        //Commits the user back into the database with the new username
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+            session.save(user);
 
-        session.save(user);
-
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+            session.close();
+        }else{ //Throws this as the username already exists
+            throw new IllegalArgumentException("New username already exists in table.");
+        }
 
     }
 
