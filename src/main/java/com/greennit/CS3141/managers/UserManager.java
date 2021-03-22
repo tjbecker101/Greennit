@@ -3,9 +3,13 @@ package com.greennit.CS3141.managers;
 import com.greennit.CS3141.entities.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
+
+import javax.transaction.Transactional;
 
 public class UserManager {
 
@@ -104,6 +108,7 @@ public class UserManager {
      * @param newUsername                   The new username of the user.
      * @throws IllegalArgumentException     If oldUsername = newUsername or if user of newUsername exists.
      */
+    @Transactional
     public void updateUsername(String oldUsername, String newUsername) throws IllegalArgumentException {
         User user = getUser(oldUsername);
 
@@ -123,19 +128,22 @@ public class UserManager {
             System.out.println("Valid Username");
         }
         if(valid) { //checks if the user was found or not
-            //Deletes the users old data from the database
-            deleteUser(oldUsername);
-            //Takes the saved user info and changes the username to the new one
-            user.setUsername(newUsername);
+            try {
+                session = sessionFactory.openSession();
+                Transaction transaction = session.beginTransaction();
 
-            //Commits the user back into the database with the new username
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-
-            session.save(user);
-
-            session.getTransaction().commit();
-            session.close();
+                String hql = "update User u set u.username = :newuser " + "where u.username = :olduser";
+                Query<User> query = session.createQuery(hql);
+                query.setParameter("newuser", newUsername);
+                query.setParameter("olduser", oldUsername);
+                query.executeUpdate();
+                transaction.commit();
+            }
+            finally {
+                if (session != null) {
+                    session.close();
+                }
+            }
         }else{ //Throws this as the username already exists
             throw new IllegalArgumentException("New username already exists in table.");
         }
