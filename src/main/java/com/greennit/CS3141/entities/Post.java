@@ -22,7 +22,7 @@ public class Post implements Serializable {
     private int host_thread;
     private String author;
     private String content;
-    private Timestamp creation_date;
+    private Timestamp time_posted;
     private int likes;
     private int parent_id;
 
@@ -59,12 +59,12 @@ public class Post implements Serializable {
         this.content = content;
     }
 
-    public Timestamp getCreation_date() {
-        return creation_date;
+    public Timestamp getTime_posted() {
+        return time_posted;
     }
 
-    public void setCreation_date(Timestamp creation_date) {
-        this.creation_date = creation_date;
+    public void setTime_posted(Timestamp time_posted) {
+        this.time_posted = time_posted;
     }
 
     public int getLikes() {

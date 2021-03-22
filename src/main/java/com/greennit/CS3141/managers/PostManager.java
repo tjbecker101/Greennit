@@ -28,7 +28,7 @@ public class PostManager {
      */
     private void setup() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure()
+                .configure("META-INF/hibernate.cfg.xml")
                 .build();
         try {
             sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
@@ -56,7 +56,7 @@ public class PostManager {
         post.setHost_thread(host_thread);
         post.setAuthor(author);
         post.setContent(content);
-        post.setCreation_date(creation_date);
+        post.setTime_posted(creation_date);
 
         session = sessionFactory.openSession();
         session.beginTransaction();
@@ -73,8 +73,8 @@ public class PostManager {
      * @return      A post from the database. May have no content.
      */
     public Post getPost(int id) throws IllegalArgumentException {
-        session = sessionFactory.openSession();
 
+        session = sessionFactory.openSession();
         Post post = session.get(Post.class, id);
 
         if (post.getContent() == null || post.getContent().equals("")) {
