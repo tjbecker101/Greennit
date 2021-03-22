@@ -9,8 +9,6 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
-import javax.transaction.Transactional;
-
 public class UserManager {
 
     private SessionFactory sessionFactory;
@@ -108,9 +106,7 @@ public class UserManager {
      * @param newUsername                   The new username of the user.
      * @throws IllegalArgumentException     If oldUsername = newUsername or if user of newUsername exists.
      */
-    @Transactional
     public void updateUsername(String oldUsername, String newUsername) throws IllegalArgumentException {
-        User user = getUser(oldUsername);
 
         boolean valid = true;
 
