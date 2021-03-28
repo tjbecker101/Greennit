@@ -1,8 +1,8 @@
 package com.greennit.CS3141.managers;
 
 import com.greennit.CS3141.entities.Post;
-import org.hibernate.SessionFactory;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -44,19 +44,17 @@ public class PostManager {
         sessionFactory.close();
     }
 
-    /**
-     * Creates a new post in a thread and pushes it to the database.
-     * @param host_thread       The thread where the post lies.
-     * @param author            The user who created the post.
-     * @param content           The content of the post.
-     * @param creation_date     The time the post was created.
-     */
-    public void createThread(int host_thread, String author, String content, Timestamp creation_date) {
+
+    public void createPost(int host_thread, String author, String content, int parent_id) {
         Post post = new Post();
-        post.setHost_thread(host_thread);
         post.setAuthor(author);
         post.setContent(content);
-        post.setTime_posted(creation_date);
+        post.setHost_thread(host_thread);
+        post.setParent_id(parent_id);
+        post.setLikes(0);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        post.setTime_posted(timestamp);
+
 
         session = sessionFactory.openSession();
         session.beginTransaction();

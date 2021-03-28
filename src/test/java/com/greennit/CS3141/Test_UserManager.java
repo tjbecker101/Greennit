@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class Test_UserManager {
 
     //User (tjbecker, 1, 123@idk.com, test, 2) will already be in database
+    //Automated Tests are Done
 
     UserManager manager;
     User user;

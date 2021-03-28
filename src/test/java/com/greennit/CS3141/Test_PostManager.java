@@ -32,7 +32,18 @@ public class Test_PostManager {
         assertEquals(timestamp, post.getTime_posted()); //Returns wrong time, off by 3 hours
         assertEquals(0, post.getLikes());
         assertEquals(3, post.getParent_id());
+    }
 
+    @Test
+    public void createPost(){
+        manager.createPost(1, "qcross", "content", 1);
+        post = manager.getPost(2);
+        
+    }
+
+    public static void main(String[] args) {
+        PostManager postManager = new PostManager();
+        postManager.createPost(1, "qcross", "contentTest", 1);
     }
 
 }
