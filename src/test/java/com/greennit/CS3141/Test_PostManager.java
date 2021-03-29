@@ -3,7 +3,9 @@ package com.greennit.CS3141;
 import com.greennit.CS3141.entities.Post;
 import com.greennit.CS3141.managers.PostManager;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,9 +13,12 @@ public class Test_PostManager {
 
     Post post;
     PostManager manager;
-    int counter = 10; //Needs to be updated each time
+    int counter = 12; //Needs to be updated each time
 
     //post(4, 1, qcross, contentTest, 2021-3-22 2021-03-28 20:49:51, 0, 4) in database
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Before
     public void start(){
@@ -52,6 +57,13 @@ public class Test_PostManager {
         post = manager.getPost(4);
         assertEquals(post.getContent(),"updateTest");
         manager.updatePostContent(4, "contentTest");
+    }
+
+    @Test
+    public void errorTest(){
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("Host Thread or Post ID provided not valid.");
+        manager.getPost(-1);
     }
 
 }
