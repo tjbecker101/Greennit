@@ -16,7 +16,7 @@ public class Test_ThreadManager {
 
     Thread thread;
     ThreadManager manager;
-    int ID = 10; // MUST BE UPDATED EVERY TEST. WORKING ON SOLUTION. CURRENT 10
+    int ID = 19; // MUST BE UPDATED EVERY TEST. WORKING ON SOLUTION. CURRENT 17
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
@@ -50,7 +50,7 @@ public class Test_ThreadManager {
 
         manager.deleteThread(ID);
 
-        exception.expect(NullPointerException.class);
+        exception.expect(IllegalArgumentException.class);
         thread = manager.getThread(ID);
         ID++;
     }
@@ -67,6 +67,21 @@ public class Test_ThreadManager {
             assertEquals("testcontent", thread.getContent());
             assertEquals("2021-03-07 14:16:54.0", thread.getCreation_date().toString());
         }
+    }
+
+    @Test
+    public void updateThreadTests(){
+        manager.updateThreadContent(1, "updateTest");
+        thread = manager.getThread(1);
+        assertEquals(thread.getId(), 1);
+        manager.updateThreadContent(1, "testcontent");
+    }
+
+    @Test
+    public void errorTest(){
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("Host Subgreennit or Thread ID provided not valid.");
+        manager.getThread(-1);
     }
 
 }

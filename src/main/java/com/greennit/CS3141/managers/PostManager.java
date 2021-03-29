@@ -75,7 +75,7 @@ public class PostManager {
         session = sessionFactory.openSession();
         Post post = session.get(Post.class, id);
 
-        if (post.getContent() == null || post.getContent().equals("")) {
+        if (post == null || post.getContent().equals("")) {
             throw new IllegalArgumentException("Host Thread or Post ID provided not valid.");
         }
 

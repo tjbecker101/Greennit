@@ -80,7 +80,7 @@ public class ThreadManager {
 
         Thread thread = session.get(Thread.class, id);
 
-        if (thread.getContent() == null || thread.getContent().equals("")) {
+        if (thread == null || thread.getContent().equals("")) {
             throw new IllegalArgumentException("Host Subgreennit or Thread ID provided not valid.");
         }
 
