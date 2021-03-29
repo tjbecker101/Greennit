@@ -88,7 +88,7 @@ public class PostManager {
      * @param id        The ID of the post.
      * @param content   The new content for the post.
      */
-    public void updateThreadContent(int id, String content) {
+    public void updatePostContent(int id, String content) {
         Post post = getPost(id);
 
         post.setContent(content);
