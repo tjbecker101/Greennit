@@ -14,52 +14,34 @@ public class Subgreennit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int subgreennit_id;
+    private int id;
 
-    private String title;
-    private String author;
-    private String content;
-    private Timestamp creation_date;
+    private String name;
+    private String description;
 
     public Subgreennit() {
     }
 
     // region getters and setters
 
-    public int getThread_id() {
-        return subgreennit_id;
+    public int getSubgreennit_id() {
+        return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = name;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Timestamp getCreation_date() {
-        return creation_date;
-    }
-
-    public void setCreation_date(Timestamp creation_date) {
-        this.creation_date = creation_date;
+    public void setDescription(String content) {
+        this.description = description;
     }
 
     // endregion
