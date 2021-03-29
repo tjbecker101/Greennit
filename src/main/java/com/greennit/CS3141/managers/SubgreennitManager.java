@@ -96,7 +96,7 @@ public class SubgreennitManager {
 
         Subgreennit subgreennit = session.get(Subgreennit.class, id);
 
-        if (subgreennit.getDescription() == null || subgreennit.getDescription().equals("")) {
+        if (subgreennit == null) {
             throw new IllegalArgumentException("Subgreennit ID provided not valid.");
         }
 
