@@ -54,20 +54,28 @@ public class ThreadManager {
      * @param creation_date     The time the thread was created.
      */
     public void createThread(int host_subgreennit, String title, String author, String content, Timestamp creation_date) {
-        Thread thread = new Thread();
-        thread.setHost_subgreennit(host_subgreennit);
-        thread.setTitle(title);
-        thread.setAuthor(author);
-        thread.setContent(content);
-        thread.setCreation_date(creation_date);
+        try {
+            Thread thread = new Thread();
+            thread.setHost_subgreennit(host_subgreennit);
+            thread.setTitle(title);
+            thread.setAuthor(author);
+            thread.setContent(content);
+            thread.setCreation_date(creation_date);
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
 
-        session.save(thread);
+            session.save(thread);
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+            if (session != null) {
+                session.getTransaction().rollback();
+                session.close();
+            }
+        }
+
     }
 
     /**
@@ -118,17 +126,24 @@ public class ThreadManager {
      * @param content           The new content for the thread.
      */
     public void updateThreadContent(int id, String content) {
-        Thread thread = getThread(id);
+        try {
+            Thread thread = getThread(id);
 
-        thread.setContent(content);
+            thread.setContent(content);
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
 
-        session.update(thread);
+            session.update(thread);
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+            if (session != null) {
+                session.getTransaction().rollback();
+                session.close();
+            }
+        }
 
     }
 
@@ -137,15 +152,22 @@ public class ThreadManager {
      * @param id    The ID of the thread.
      */
     public void deleteThread(int id) {
-        Thread thread = getThread(id);
+        try {
+            Thread thread = getThread(id);
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
 
-        session.delete(thread);
+            session.delete(thread);
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+            if (session != null) {
+                session.getTransaction().rollback();
+                session.close();
+            }
+        }
     }
 
 }
