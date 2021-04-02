@@ -98,8 +98,9 @@ public class ThreadManager {
         try {
             session = sessionFactory.openSession();
 
-            String hql = "from Thread where " + filter;
+            String hql = "from Thread where :condition";
             Query<Thread> query = session.createQuery(hql);
+            query.setParameter("condition", filter);
 
             return query.list();
         }
