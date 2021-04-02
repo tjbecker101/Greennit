@@ -6,8 +6,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /*
  * This class manages the input, reading, deletion, and updating of entities
@@ -101,6 +103,28 @@ public class PostManager {
         session.getTransaction().commit();
         session.close();
 
+    }
+
+    /**
+     * Prototype method
+     * Gets a list of threads given a host thread.
+     * @param host_thread   The thread where all the posts are located at.
+     * @return              A list of posts in the thread.
+     */
+    public List<Post> getPostsByThread(int host_thread) {
+        try {
+            session = sessionFactory.openSession();
+
+            String hql = "from Post where host_thread = :thread";
+            Query<Post> query = session.createQuery(hql);
+            query.setParameter("thread", host_thread);
+
+            return query.list();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
     }
 
     /**
