@@ -90,8 +90,9 @@ public class UserSignupServlet extends HttpServlet {
         }
 
         if(isValid) {
-            destPage = "signup_success.jsp";
-            manager.createUser(username, password1, email);
+            destPage = "index.jsp";
+            HttpSession session = request.getSession();
+            session.setAttribute("user", manager.createUser(username, password1, email));
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
