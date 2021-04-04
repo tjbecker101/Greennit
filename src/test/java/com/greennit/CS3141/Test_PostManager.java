@@ -5,7 +5,10 @@ import com.greennit.CS3141.managers.PostManager;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.rules.ExpectedException;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -59,7 +62,17 @@ public class Test_PostManager {
 
     @Test
     public void postsByThread(){
+        List<Post> posts = manager.getPostsByThread(1);
+        for(Post post : posts){
+            Assertions.assertEquals(4, post.getId());
+            Assertions.assertEquals(1, post.getHost_thread());
+            Assertions.assertEquals("qcross", post.getAuthor());
+            Assertions.assertEquals("contentTest", post.getContent());
+            Assertions.assertEquals(15, post.getLikes());
+            Assertions.assertEquals("2021-04-04 14:59:17.0", post.getTime_posted().toString());
+            Assertions.assertEquals(4, post.getParent_id());
 
+        }
     }
 
     @Test
