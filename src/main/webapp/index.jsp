@@ -91,7 +91,7 @@
           <div class="card-body">
             <h2 class="card-title">Post Title</h2>
             <p class="card-text">Hello there</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <a href="Post_Layout.jsp" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
             Posted on January 1, 2020 by
