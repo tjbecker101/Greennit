@@ -39,8 +39,8 @@ public class Test_ThreadManager {
 
     @Test()
     public void checkInsertAndDelete() {
-        manager.createThread(1,"test2", "qcross", "testcontent2", Timestamp.valueOf("2000-03-03 12:00:00.0"));
-        thread = manager.getThread(ID);
+        thread = manager.createThread(1,"test2", "qcross", "testcontent2", Timestamp.valueOf("2000-03-03 12:00:00.0"));
+        int ID = thread.getId();
         assertEquals(1, thread.getHost_subgreennit());
         assertEquals(ID, thread.getId());
         assertEquals("test2", thread.getTitle());
@@ -52,7 +52,6 @@ public class Test_ThreadManager {
 
         exception.expect(IllegalArgumentException.class);
         thread = manager.getThread(ID);
-        ID++;
     }
 
     @Test
