@@ -41,7 +41,7 @@
                         <a class="nav-link" href="#">${user.username}</a>
                     </li>
                 </c:if>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="index.jsp">Home
                         <span class="sr-only">(current)</span>
                     </a>
@@ -59,7 +59,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="login.jsp">Login</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="signup.jsp">Sign up</a>
                     </li>
                 </c:if>
