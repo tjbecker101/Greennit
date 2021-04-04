@@ -56,7 +56,7 @@ public class Test_ThreadManager {
 
     @Test
     public void checkGetThreads() {
-        List<Thread> threads = manager.getThreads("id=1");
+        List<Thread> threads = manager.getThreads(1);
 
         for (Thread thread : threads) {
             assertEquals(1, thread.getId());

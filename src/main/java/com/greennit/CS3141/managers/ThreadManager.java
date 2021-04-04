@@ -105,11 +105,11 @@ public class ThreadManager {
      * @param filter    The filter to filter through the database with.
      * @return          A list of threads matching the filter.
      */
-    public List<Thread> getThreads(String filter) {
+    public List<Thread> getThreads(int filter) {
         try {
             session = sessionFactory.openSession();
 
-            String hql = "from Thread where :condition";
+            String hql = "from Thread where host_subgreennit = :condition";
             Query<Thread> query = session.createQuery(hql);
             query.setParameter("condition", filter);
 
