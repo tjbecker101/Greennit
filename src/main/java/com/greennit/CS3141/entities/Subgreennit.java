@@ -32,7 +32,7 @@ public class Subgreennit implements Serializable {
         return name;
     }
 
-    public void setName(String title) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -40,7 +40,7 @@ public class Subgreennit implements Serializable {
         return description;
     }
 
-    public void setDescription(String content) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

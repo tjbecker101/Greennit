@@ -74,6 +74,7 @@ public class Test_ThreadManager {
         manager.updateThreadContent(1, "updateTest");
         thread = manager.getThread(1);
         assertEquals(thread.getId(), 1);
+        assertEquals("updateTest", thread.getContent());
         manager.updateThreadContent(1, "testcontent");
     }
 

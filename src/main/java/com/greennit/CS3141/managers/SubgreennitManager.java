@@ -31,7 +31,7 @@ public class SubgreennitManager {
      */
     private void setup() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure()
+                .configure("META-INF/hibernate.cfg.xml")
                 .build();
         try {
             sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
@@ -49,11 +49,12 @@ public class SubgreennitManager {
 
 
     public void updateName(int id, String name){
+        Subgreennit subgreennit = getSubgreennit(id);
+        subgreennit.setName(name);
+
         session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Subgreennit subgreennit = session.get(Subgreennit.class, id);
-        subgreennit.setName(name);
         session.update(subgreennit);
 
         session.getTransaction().commit();
@@ -61,18 +62,19 @@ public class SubgreennitManager {
     }
 
     public void updateDescription(int id, String description){
+        Subgreennit subgreennit = getSubgreennit(id);
+        subgreennit.setDescription(description);
+
         session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Subgreennit subgreennit = session.get(Subgreennit.class, id);
-        subgreennit.setDescription(description);
         session.update(subgreennit);
 
         session.getTransaction().commit();
         session.close();
     }
 
-    public void createSubgreennit(String name, String description) {
+    public Subgreennit createSubgreennit(String name, String description) {
         Subgreennit subgreennit = new Subgreennit();
         subgreennit.setName(name);
         subgreennit.setDescription(description);
@@ -84,6 +86,8 @@ public class SubgreennitManager {
 
         session.getTransaction().commit();
         session.close();
+
+        return subgreennit;
     }
 
     /**
@@ -128,30 +132,10 @@ public class SubgreennitManager {
 
 
     /**
-     * Updates a subgreennit's content in the database.
-     * @param id         The ID of the subgreennit.
-     * @param description    The new description for the subgreennit.
-     */
-    public void updateSubgreennitContent(int id, String description) {
-        Subgreennit subgreennit = getSubgreennit(id);
-
-        subgreennit.setDescription(description);
-
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-
-        session.update(subgreennit);
-
-        session.getTransaction().commit();
-        session.close();
-
-    }
-
-    /**
      * Deletes a subgreennit from the database.
      * @param id    The ID of the subgreennit.
      */
-    public void deleteSubgreennit(int id) {
+    public Subgreennit deleteSubgreennit(int id) {
         Subgreennit subgreennit = getSubgreennit(id);
 
         session = sessionFactory.openSession();
@@ -161,6 +145,8 @@ public class SubgreennitManager {
 
         session.getTransaction().commit();
         session.close();
+
+        return subgreennit;
     }
 
 }

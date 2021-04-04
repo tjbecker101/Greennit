@@ -46,7 +46,7 @@ public class UserManager {
      * @param password - the password of the new user
      * @param email    - the email of the new user
      */
-    public void createUser(String username, String password, String email) {
+    public User createUser(String username, String password, String email) {
         //Creates a user with the provided values
         User user = new User();
         user.setUsername(username);
@@ -63,6 +63,8 @@ public class UserManager {
 
         session.getTransaction().commit();
         session.close();
+
+        return user;
     }
 
     /**
@@ -204,7 +206,7 @@ public class UserManager {
      *
      * @param username - the username of the one to be deleted
      */
-    public void deleteUser(String username) {
+    public User deleteUser(String username) {
 
         User user = new User();
         user.setUsername(username);
@@ -214,5 +216,6 @@ public class UserManager {
         session.getTransaction().commit();
         session.close();
 
+        return user;
     }
 }
