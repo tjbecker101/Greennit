@@ -58,6 +58,11 @@ public class Test_PostManager {
     }
 
     @Test
+    public void postsByThread(){
+
+    }
+
+    @Test
     public void errorTest(){
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage("Host Thread or Post ID provided not valid.");
