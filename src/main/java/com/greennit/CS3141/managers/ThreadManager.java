@@ -53,7 +53,7 @@ public class ThreadManager {
      * @param content           The content of the thread.
      * @param creation_date     The time the thread was created.
      */
-    public void createThread(int host_subgreennit, String title, String author, String content, Timestamp creation_date) {
+    public Thread createThread(int host_subgreennit, String title, String author, String content, Timestamp creation_date) {
         try {
             Thread thread = new Thread();
             thread.setHost_subgreennit(host_subgreennit);
@@ -69,11 +69,14 @@ public class ThreadManager {
 
             session.getTransaction().commit();
             session.close();
+
+            return thread;
         } catch (Exception e) {
             if (session != null) {
                 session.getTransaction().rollback();
                 session.close();
             }
+            return null;
         }
 
     }
@@ -151,7 +154,7 @@ public class ThreadManager {
      * Deletes a thread from the database.
      * @param id    The ID of the thread.
      */
-    public void deleteThread(int id) {
+    public Thread deleteThread(int id) {
         try {
             Thread thread = getThread(id);
 
@@ -162,11 +165,14 @@ public class ThreadManager {
 
             session.getTransaction().commit();
             session.close();
+
+            return thread;
         } catch (Exception e) {
             if (session != null) {
                 session.getTransaction().rollback();
                 session.close();
             }
+            return null;
         }
     }
 

@@ -47,7 +47,7 @@ public class PostManager {
     }
 
 
-    public void createPost(int host_thread, String author, String content, int parent_id) {
+    public Post createPost(int host_thread, String author, String content, int parent_id) {
         Post post = new Post();
         post.setAuthor(author);
         post.setContent(content);
@@ -65,6 +65,8 @@ public class PostManager {
 
         session.getTransaction().commit();
         session.close();
+
+        return post;
     }
 
     /**
@@ -131,7 +133,7 @@ public class PostManager {
      * Deletes a thread from the database.
      * @param id    The ID of the post.
      */
-    public void deletePost(int id) {
+    public Post deletePost(int id) {
         Post post = getPost(id);
 
         session = sessionFactory.openSession();
@@ -141,6 +143,8 @@ public class PostManager {
 
         session.getTransaction().commit();
         session.close();
+
+        return post;
     }
 
 }
