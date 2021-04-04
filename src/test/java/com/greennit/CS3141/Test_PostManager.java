@@ -13,7 +13,6 @@ public class Test_PostManager {
 
     Post post;
     PostManager manager;
-    int counter = 12; //Needs to be updated each time
 
     //post(4, 1, qcross, contentTest, 2021-3-22 2021-03-28 20:49:51, 0, 4) in database
 
@@ -40,12 +39,11 @@ public class Test_PostManager {
 
     @Test
     public void createAndDeletePost(){
-        manager.createPost(1, "qcross", "createPostTest", 4);
-        post = manager.getPost(counter);
+        post = manager.createPost(1, "qcross", "createPostTest", 4);
         assertEquals(post.getContent(), "createPostTest");
-        manager.deletePost(counter);
+        manager.deletePost(post.getId());
         try{
-            manager.getPost(counter);
+            manager.getPost(post.getId());
         }catch(IllegalArgumentException ex){
             assertEquals("Host Thread or Post ID provided not valid.", ex.getMessage());
         }
