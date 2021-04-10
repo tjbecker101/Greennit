@@ -23,7 +23,7 @@ public class UserLoginServlet extends HttpServlet {
 
         UserDAO userDao = new UserDAO();
 
-        User user = userDao.checkLogin(username, password);
+        User user = userDao.checkLogin(username.toLowerCase(), password);
         String destPage = "login.jsp";
 
         if (user != null) {
