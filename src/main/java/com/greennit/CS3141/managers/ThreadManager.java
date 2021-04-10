@@ -101,17 +101,17 @@ public class ThreadManager {
 
     /**
      * Prototype method
-     * Gets a list of threads given a filter.
-     * @param filter    The filter to filter through the database with.
-     * @return          A list of threads matching the filter.
+     * Gets a list of threads given a host subgreennit.
+     * @param host_subgreenit   The filter to filter through the database with.
+     * @return                  A list of threads matching the host subgreennit.
      */
-    public List<Thread> getThreads(int filter) {
+    public List<Thread> getThreadsBySubgreennit(int host_subgreenit) {
         try {
             session = sessionFactory.openSession();
 
             String hql = "from Thread where host_subgreennit = :condition";
             Query<Thread> query = session.createQuery(hql);
-            query.setParameter("condition", filter);
+            query.setParameter("condition", host_subgreenit);
 
             return query.list();
         }
@@ -122,6 +122,28 @@ public class ThreadManager {
         }
     }
 
+    /**
+     * Prototype method
+     * Gets a list of threads given a host subgreennit.
+     * @param host_subgreenit   The filter to filter through the database with.
+     * @return                  A list of threads matching the host subgreennit.
+     */
+    public List<Thread> getThreadsByTitle(String title) {
+        try {
+            session = sessionFactory.openSession();
+
+            String hql = "from Thread where title like %:condition%";
+            Query<Thread> query = session.createQuery(hql);
+            query.setParameter("condition", title);
+
+            return query.list();
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
 
     /**
      * Updates a thread's content in the database.
