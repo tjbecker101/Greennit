@@ -109,16 +109,15 @@ public class SubgreennitManager {
     }
 
     /**
-     * Prototype method
-     * Gets a list of subgreennits given a filter.
-     * @param filter    The filter to filter through the database with.
-     * @return          A list of subgreennits matching the filter.
+     * Gets a list of subgreennits given a name.
+     * @param name      The name of, or a part of, the subgreenit.
+     * @return          A list of subgreennits matching the name.
      */
-    public List<Subgreennit> getSubgreennits(String filter) {
+    public List<Subgreennit> getSubgreennits(String name) {
         try {
             session = sessionFactory.openSession();
 
-            String hql = "from Subgreennit where " + filter;
+            String hql = "from Subgreennit where name like %:name%";
             Query<Subgreennit> query = session.createQuery(hql);
 
             return query.list();
