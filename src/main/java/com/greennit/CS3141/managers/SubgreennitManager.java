@@ -117,9 +117,9 @@ public class SubgreennitManager {
         try {
             session = sessionFactory.openSession();
 
-            String hql = "from Subgreennit where name like %:name%";
+            String hql = "from Subgreennit where name like :name";
             Query<Subgreennit> query = session.createQuery(hql);
-            query.setParameter("name", name);
+            query.setParameter("name", "%" + name + "%");
 
             return query.list();
         }
