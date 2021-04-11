@@ -1,6 +1,5 @@
 package com.greennit.CS3141.webpage;
 
-import com.greennit.CS3141.entities.User;
 import com.greennit.CS3141.managers.UserManager;
 
 import java.io.*;
@@ -71,7 +70,7 @@ public class UserSignupServlet extends HttpServlet {
             String messageUsername = "User already exists";
             request.setAttribute("messageUsername", messageUsername);
             isValid = false;
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException ignored) {
         }
         if (!isValidEmail(email)) {
             String messageEmail = "Invalid email address";
@@ -97,5 +96,6 @@ public class UserSignupServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
         dispatcher.forward(request, response);
+        manager.exit();
     }
 }

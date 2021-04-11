@@ -19,5 +19,8 @@ public class UserDAO {
         } catch (IllegalArgumentException e) {
             return null;
         }
+        finally {
+            manager.exit();
+        }
     }
 }
