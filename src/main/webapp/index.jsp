@@ -1,4 +1,6 @@
 <%@ page import="com.greennit.CS3141.entities.User" %>
+<%@ page import="com.greennit.CS3141.managers.PostManager" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
@@ -36,24 +38,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <c:if test="${!empty user}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">${user.username}</a>
-                    </li>
-                </c:if>
                 <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="index.jsp">Home
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
                 </li>
                 <c:if test="${empty user}">
                     <li class="nav-item">
@@ -64,6 +53,12 @@
                     </li>
                 </c:if>
                 <c:if test="${not empty user}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="create_post.jsp">Create Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">${user.username}</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout">Logout</a>
                     </li>
@@ -94,8 +89,10 @@
             <a href="Post_Layout.jsp" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on January 1, 2020 by
-            <a href="#">Start Bootstrap</a>
+            Posted on <%
+              PostManager postManager = new PostManager();
+              out.print(new SimpleDateFormat("MM/dd/yyyy").format(postManager.getPost(4).getTime_posted())); %> by
+            <a href="#"><% out.println(postManager.getPost(4).getAuthor()); %></a>
           </div>
         </div>
 

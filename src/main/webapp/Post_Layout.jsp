@@ -1,4 +1,6 @@
 <%@ page import="com.greennit.CS3141.managers.PostManager" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="com.greennit.CS3141.entities.User" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,16 +45,6 @@
                     <a class="nav-link" href="index.jsp">Home
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
                 <c:if test="${empty user}">
                     <li class="nav-item">
                         <a class="nav-link" href="login.jsp">Login</a>
@@ -97,7 +89,7 @@
         Posted: <%
         long difference = System.currentTimeMillis() - postManager.getPost(4).getTime_posted().getTime();
         difference = difference / 86400000; //Converts to days
-        out.println(difference);%> days ago
+        out.println(difference + " Days Ago");%>
       </div>
     </div>
 
