@@ -93,7 +93,10 @@
 </div>
 
 <!-- Footer -->
-<footer class="py-5 bg-dark fixed-bottom">
+<footer class="py-5 bg-dark" style="
+                                    position: absolute;
+                                    bottom: 0;
+                                    width: 100%;">
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; GREENNIT 2020</p>
     </div>
