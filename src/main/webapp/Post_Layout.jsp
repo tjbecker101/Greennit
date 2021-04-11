@@ -1,6 +1,10 @@
 <%@ page import="com.greennit.CS3141.managers.PostManager" %>
 <%@ page import="java.sql.Timestamp" %>
 <%@ page import="com.greennit.CS3141.entities.User" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.TimeZone" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,16 +87,13 @@
     <div class="row">
         <div class="col-2">
             Author: <% PostManager postManager = new PostManager();
-            out.println(postManager.getPost(4).getAuthor());%>
+            out.println(postManager.getPost(25).getAuthor());%>
         </div>
         <div class="col-2">
-            Likes: <% out.println(postManager.getPost(4).getLikes());%>
+            Likes: <% out.println(postManager.getPost(25).getLikes());%>
         </div>
         <div class="col-2">
-            Posted: <%
-            long difference = System.currentTimeMillis() - postManager.getPost(4).getTime_posted().getTime();
-            difference = difference / 86400000; //Converts to days
-            out.println(difference + " Days Ago");%>
+            Posted: <% out.println(postManager.getPost(25).getTimeAgo());%>
         </div>
     </div>
 
