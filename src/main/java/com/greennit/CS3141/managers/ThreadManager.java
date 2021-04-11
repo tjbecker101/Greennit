@@ -132,9 +132,9 @@ public class ThreadManager {
         try {
             session = sessionFactory.openSession();
 
-            String hql = "from Thread where title like %:condition%";
+            String hql = "from Thread where title like :condition";
             Query<Thread> query = session.createQuery(hql);
-            query.setParameter("condition", title);
+            query.setParameter("condition", "%" + title + "%");
 
             return query.list();
         }
