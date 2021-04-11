@@ -1,3 +1,6 @@
+<%@ page import="com.greennit.CS3141.managers.ThreadManager" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.greennit.CS3141.entities.Thread" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
@@ -70,50 +73,38 @@
 <div class="container" style="padding-top:15pt">
     <div class="row">
         <div class="col">
-            <h3 class="my-auto">Search results for: <em>${search}</em></h3>
-            <c:if test="${!empty subgreennits}">
-                <br>
-                <h6 class="my-auto">Subgreenits: </h6>
-                <br>
-            </c:if>
-            <c:forEach items="${subgreennits}" var="subgreennit">
-                <div class="card">
-                    <div class="card-header">
-                        <a href="subgreennit?id=${subgreennit.id}" class="card-link">${subgreennit.name}</a>
-                    </div>
-                    <div class="card-body">
-                        <p class="my-auto">${subgreennit.description}</p>
-                    </div>
+            <div class="card">
+                <div class="card-header">
+                    <p class="my-auto">g/${currentSubgreennit.name}</p>
                 </div>
-                <br>
-            </c:forEach>
-            <c:if test="${!empty threads}">
-                <br>
-                <h6 class="my-auto">Threads: </h6>
-                <br>
+                <div class="card-body">
+                    <p class="my-auto">ID: ${currentSubgreennit.id}</p>
+                    <p class="my-auto">Description: ${currentSubgreennit.description}</p>
+                </div>
+            </div>
+            <br>
+            <c:if test="${empty threadsInSubgreennit}">
+                <p class="my-auto">No posts have been created yet.</p>
             </c:if>
-            <c:forEach items="${threads}" var="thread">
+            <c:forEach items="${threadsInSubgreennit}" var="t">
                 <div class="card">
                     <div class="card-header">
-                        <a href="#" class="card-link">${thread.title}</a>
+                        <a href="#" class="card-link">${t.title}</a>
                     </div>
                     <div class="card-body">
-                        <p class="my-auto text-wrap">${thread.content}</p>
+                        <p class="my-auto text-wrap">${t.content}</p>
                     </div>
                     <div class="card-footer">
-                        <p class="my-auto">Author: ${thread.author}</p>
-                        <p class="my-auto">Posted on: ${thread.creation_date}</p>
+                        <p class="my-auto text-wrap">Author: ${t.author}</p>
+                        <p class="my-auto text-wrap">Posted on: ${t.creation_date}</p>
                     </div>
                 </div>
                 <br>
             </c:forEach>
-            <c:if test="${empty threads and empty subgreennits}">
-                <br>
-                <p class="my-auto">No results.</p>
-            </c:if>
         </div>
     </div>
 </div>
+
 <!-- Footer -->
 <footer class="py-5 bg-dark" style="
                                     position: absolute;
