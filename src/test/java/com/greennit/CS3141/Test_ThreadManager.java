@@ -29,7 +29,7 @@ public class Test_ThreadManager {
     @Test
     public void checkAllFieldsExist() {
         thread = manager.getThread(1);
-        assertEquals(1, thread.getHost_subgreennit());
+        assertEquals(1, thread.getHost());
         assertEquals(1, thread.getId());
         assertEquals("test", thread.getTitle());
         assertEquals("qcross", thread.getAuthor());
@@ -41,7 +41,7 @@ public class Test_ThreadManager {
     public void checkInsertAndDelete() {
         thread = manager.createThread(1,"test2", "qcross", "testcontent2", Timestamp.valueOf("2000-03-03 12:00:00.0"));
         int ID = thread.getId();
-        assertEquals(1, thread.getHost_subgreennit());
+        assertEquals(1, thread.getHost());
         assertEquals(ID, thread.getId());
         assertEquals("test2", thread.getTitle());
         assertEquals("qcross", thread.getAuthor());
@@ -60,7 +60,7 @@ public class Test_ThreadManager {
 
         for (Thread thread : threads) {
             assertEquals(1, thread.getId());
-            assertEquals(1, thread.getHost_subgreennit());
+            assertEquals(1, thread.getHost());
             assertEquals("test", thread.getTitle());
             assertEquals("qcross", thread.getAuthor());
             assertEquals("testcontent", thread.getContent());

@@ -56,7 +56,7 @@ public class ThreadManager {
     public Thread createThread(int host_subgreennit, String title, String author, String content, Timestamp creation_date) {
         try {
             Thread thread = new Thread();
-            thread.setHost_subgreennit(host_subgreennit);
+            thread.setHost(host_subgreennit);
             thread.setTitle(title);
             thread.setAuthor(author);
             thread.setContent(content);
@@ -109,7 +109,7 @@ public class ThreadManager {
         try {
             session = sessionFactory.openSession();
 
-            String hql = "from Thread where host_subgreennit = :condition";
+            String hql = "from Thread where host = :condition";
             Query<Thread> query = session.createQuery(hql);
             query.setParameter("condition", host_subgreenit);
 

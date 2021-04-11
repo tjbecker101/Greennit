@@ -21,7 +21,7 @@ public class Thread implements Serializable {
     @Column(name = "id")
     private int id;
 
-    private int host_subgreennit;
+    private int host;
     private String title;
     private String author;
     private String content;
@@ -32,12 +32,12 @@ public class Thread implements Serializable {
 
     // region getters and setters
 
-    public int getHost_subgreennit() {
-        return host_subgreennit;
+    public int getHost() {
+        return host;
     }
 
-    public void setHost_subgreennit(int host_subgreennit) {
-        this.host_subgreennit = host_subgreennit;
+    public void setHost(int host_subgreennit) {
+        this.host = host_subgreennit;
     }
 
     public int getId() {
