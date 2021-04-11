@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Blog Home - Start Bootstrap Template</title>
+  <title>Greennit</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,12 +31,18 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">GREENNIT</a>
+        <a class="navbar-brand" href="index.jsp">GREENNIT</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="form-row">
+            <form action="search" method="get" class="">
+                <input class="form-control" name="search" type="search"  placeholder="Search for..."/>
+            </form>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive" style="padding: 0 0 0 5pt">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                 <li class="nav-item">
@@ -49,7 +55,7 @@
                         <a class="nav-link" href="login.jsp">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="signup.jsp">Sign up</a>
+                        <a class="nav-link" href="signup.jsp">Register</a>
                     </li>
                 </c:if>
                 <c:if test="${not empty user}">
@@ -166,11 +172,11 @@
                     <a href="#">HTML</a>
                   </li>
                   <li>
-                    <a href="#">Freebies</a>
+                    <a href="""#">Freebies</a>
                   </li>
                 </ul>
               </div>
-              <div class="col-lg-6">
+              <div class="""col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
                     <a href="#">JavaScript</a>
@@ -204,7 +210,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="flex-wrap py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GREENNIT 2020</p>
     </div>
