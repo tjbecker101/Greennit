@@ -1,15 +1,12 @@
 package com.greennit.CS3141;
 
 import com.greennit.CS3141.entities.Subgreennit;
-import com.greennit.CS3141.entities.Subgreennit;
-import com.greennit.CS3141.managers.SubgreennitManager;
 import com.greennit.CS3141.managers.SubgreennitManager;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,7 +27,7 @@ public class Test_SubgreennitManager {
     @Test
     public void checkAllFieldsExist() {
         subgreennit = manager.getSubgreennit(1);
-        assertEquals(1, subgreennit.getSubgreennit_id());
+        assertEquals(1, subgreennit.getId());
         assertEquals("test", subgreennit.getName());
         assertEquals("abc", subgreennit.getDescription());
     }
@@ -38,8 +35,8 @@ public class Test_SubgreennitManager {
     @Test()
     public void checkInsertAndDelete() {
         subgreennit = manager.createSubgreennit("tempName","tempDesc");
-        int ID = subgreennit.getSubgreennit_id();
-        assertEquals(ID, subgreennit.getSubgreennit_id());
+        int ID = subgreennit.getId();
+        assertEquals(ID, subgreennit.getId());
         assertEquals("tempName", subgreennit.getName());
         assertEquals("tempDesc", subgreennit.getDescription());
 
@@ -54,7 +51,7 @@ public class Test_SubgreennitManager {
         List<Subgreennit> subgreennits = manager.getSubgreennits("id=1");
 
         for (Subgreennit subgreennit : subgreennits) {
-            assertEquals(1, subgreennit.getSubgreennit_id());
+            assertEquals(1, subgreennit.getId());
             assertEquals("test", subgreennit.getName());
             assertEquals("abc", subgreennit.getDescription());
         }
@@ -64,7 +61,7 @@ public class Test_SubgreennitManager {
     public void updateSubgreennitTests(){
         manager.updateDescription(1, "new");
         subgreennit = manager.getSubgreennit(1);
-        assertEquals(1, subgreennit.getSubgreennit_id());
+        assertEquals(1, subgreennit.getId());
         assertEquals("new", subgreennit.getDescription());
         manager.updateDescription(1, "abc");
     }

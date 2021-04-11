@@ -24,7 +24,7 @@ public class Subgreennit implements Serializable {
 
     // region getters and setters
 
-    public int getSubgreennit_id() {
+    public int getId() {
         return id;
     }
 
