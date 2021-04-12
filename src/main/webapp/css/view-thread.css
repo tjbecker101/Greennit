@@ -1,11 +1,16 @@
 /*
  * @Author Eric Goulet
  */
-body {
-    padding-top: 56px;
-
-}
-
 .row{
     padding-bottom: 25px;
+}
+
+html, body {
+    padding-top: 56px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

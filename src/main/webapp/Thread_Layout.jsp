@@ -5,6 +5,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.TimeZone" %>
+<%@ page import="com.greennit.CS3141.managers.ThreadManager" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Greenit</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -74,25 +75,34 @@
 
     <div class="row">
 
-        <!-- Post Entry -->
+        <!-- Thread Title -->
         <div class="col-8">
-            <h1 class="my-4">Post Title
-                <img class="card-img-top" src="https://i.imgur.com/g5fxSB8.jpg" alt="Card image cap">
-            </h1>
+            <h1 class="my-4">Post Title</h1>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <!-- Thread Content -->
+        <div class="col-8">
+            <h4> <%
+                ThreadManager threadManager = new ThreadManager();
+                PostManager postManager = new PostManager();
+                out.println(threadManager.getThread(1).getContent());
+            %> </h4>
         </div>
     </div>
 
     <%-- Displays the Author, Likes, and Time Posted --%>
     <div class="row">
         <div class="col-2">
-            Author: <% PostManager postManager = new PostManager();
-            out.println(postManager.getPost(25).getAuthor());%>
+            Author: <% out.println(threadManager.getThread(1).getAuthor());%>
         </div>
         <div class="col-2">
-            Likes: <% out.println(postManager.getPost(25).getLikes());%>
+            Likes: <% out.println();//threadManager.getThread(1).getLikes());%>
         </div>
         <div class="col-2">
-            Posted: <% out.println(postManager.getPost(25).getTimeAgo());%>
+            Posted: <% out.println(threadManager.getThread(1).getTimeAgo());%>
         </div>
     </div>
 
