@@ -27,7 +27,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/view-post.css" rel="stylesheet">
+    <link href="css/view-thread.css" rel="stylesheet">
 
 </head>
 
