@@ -61,7 +61,7 @@
                 </c:if>
                 <c:if test="${not empty user}">
                     <li class="nav-item">
-                        <a class="nav-link" href="create_post.jsp">Create Post</a>
+                        <a class="nav-link" href="create_thread.jsp">Create Post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">${user.username}</a>
