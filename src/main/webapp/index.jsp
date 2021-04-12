@@ -87,9 +87,9 @@
                 <small><br>Your HUB for unnecessarily green forums</small>
             </h1>
 
+
             <!-- Blog Post -->
             <div class="card mb-4">
-                <img class="card-img-top" src="https://i.imgur.com/g5fxSB8.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">Post Title</h2>
                     <p class="card-text">Hello there</p>
@@ -105,7 +105,6 @@
 
             <!-- Blog Post -->
             <div class="card mb-4">
-                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">Post Title</h2>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid
@@ -121,7 +120,6 @@
 
             <!-- Blog Post -->
             <div class="card mb-4">
-                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">Post Title</h2>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid
