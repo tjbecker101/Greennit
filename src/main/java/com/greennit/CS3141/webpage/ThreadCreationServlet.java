@@ -30,11 +30,24 @@ public class ThreadCreationServlet extends HttpServlet {
         //System.out.println(host);
         int host = 1;
 
-
         ThreadManager threadManager = new ThreadManager();
-        threadManager.createThread(host, title, author, content, new Timestamp(System.currentTimeMillis()));
-        String destPage = "Thread_Layout.jsp";
-
+        String destPage = "create_thread.jsp";
+        if(title.equals("")) {
+            String message = "Please Include a title";
+            request.setAttribute("message", message);
+            System.out.println("test1");
+        }
+        else if(content.equals("")){
+            String message = "Please Include the Content of the Thread";
+            request.setAttribute("message", message);
+        }
+        else if(author.equals("")){
+            String message = "Please Sign in";
+            request.setAttribute("message", message);
+        }else{
+            threadManager.createThread(host, title, author, content, new Timestamp(System.currentTimeMillis()));
+            destPage = "Thread_Layout.jsp";
+        }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
         dispatcher.forward(request, response);

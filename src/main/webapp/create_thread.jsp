@@ -43,7 +43,7 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <c:if test="${user.username == null}">
+                <c:if test="${empty user}">
                     <li class="nav-item">
                         <a class="nav-link" href="login.jsp">Login</a>
                     </li>
@@ -85,6 +85,7 @@
                 <input type="hidden" name="author" value="${user.username}">
                 <input type="hidden" name="host" value="${thread.host}">
 
+                <p class="text-warning">${message}</p><br>
                 <button type="submit" class="btn btn-dark" onclick="">Create Thread</button>
             </form>
 
