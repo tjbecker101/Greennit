@@ -24,7 +24,6 @@ public class Post implements Serializable {
     private String content;
     private Timestamp time_posted;
     private int likes;
-    private int parent_id;
 
     public Post(){
 
@@ -73,14 +72,6 @@ public class Post implements Serializable {
 
     public void setLikes(int likes) {
         this.likes = likes;
-    }
-
-    public int getParent_id() {
-        return parent_id;
-    }
-
-    public void setParent_id(int parent_id) {
-        this.parent_id = parent_id;
     }
 
     /*

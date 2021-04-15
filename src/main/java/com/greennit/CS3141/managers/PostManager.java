@@ -47,12 +47,11 @@ public class PostManager {
     }
 
 
-    public Post createPost(int host_thread, String author, String content, int parent_id) {
+    public Post createPost(int host_thread, String author, String content) {
         Post post = new Post();
         post.setAuthor(author);
         post.setContent(content);
         post.setHost_thread(host_thread);
-        post.setParent_id(parent_id);
         post.setLikes(0);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         post.setTime_posted(timestamp);
