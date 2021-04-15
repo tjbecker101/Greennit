@@ -82,7 +82,6 @@ public class UserManager {
         Query<User> query = session.createQuery(hql);
         query.setParameter("username", username);
         User user = query.getSingleResult();
-        //User user = session.get(User.class, username);
 
         if (user == null || user.getUsername().equals("")) { //Checks if the username exists or not
             throw new IllegalArgumentException("Username provided not valid.");
