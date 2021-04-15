@@ -6,6 +6,8 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.TimeZone" %>
 <%@ page import="com.greennit.CS3141.managers.ThreadManager" %>
+<%@ page import="com.greennit.CS3141.entities.Post" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -74,43 +76,62 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="row">
+    <div class="card">
+        <div class="card-header">
+            <!-- Thread Title -->
+            <h1 class="my-4">${currentThread.title}</h1>
+        </div>
 
-        <!-- Thread Title -->
-        <div class="col-8">
-            <h1 class="my-4">Post Title</h1>
+        <div class="card-body">
+            <!-- Thread Content -->
+            <h4>${currentThread.content}</h4>
+        </div>
+
+        <%-- Displays the Author, Likes, and Time Posted --%>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-2">
+                    Author: ${currentThread.author}
+                </div>
+                <div class="col-2">
+                    Likes: ${currentThread.likes}
+                </div>
+                <div class="col-2">
+                    Posted ${currentThread.timeAgo}
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="row">
-
-        <!-- Thread Content -->
-        <div class="col-8">
-            <h4> <%
-                ThreadManager threadManager = new ThreadManager();
-                PostManager postManager = new PostManager();
-                out.println(threadManager.getThread(1).getContent());
-            %> </h4>
+    <!-- /.card -->
+    <br>
+    <div class="card">
+        <div class="card-header">
+            <h6>Comments: <p class="float-right">Comment on thread</p></h6>
         </div>
+        <c:forEach items="${posts}" var="post">
+            <div class="card">
+                <div class="card-body">
+                    <p>${post.content}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-2">
+                            Author: ${post.author}
+                        </div>
+                        <div class="col-2">
+                            Likes: ${post.likes}
+                        </div>
+                        <div class="col-2">
+                            Posted ${post.timeAgo}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 
-    <%-- Displays the Author, Likes, and Time Posted --%>
-    <div class="row">
-        <div class="col-2">
-            Author: <% out.println(threadManager.getThread(1).getAuthor());%>
-        </div>
-        <div class="col-2">
-            Likes: <% out.println(threadManager.getThread(1).getLikes());%>
-        </div>
-        <div class="col-2">
-            Posted: <% out.println(threadManager.getThread(1).getTimeAgo());%>
-        </div>
-    </div>
-
-    <!-- /.row -->
 </div>
 <!-- /.container -->
-
 
 
 <!-- Bootstrap core JavaScript -->
