@@ -99,7 +99,7 @@
             Author: <% out.println(threadManager.getThread(1).getAuthor());%>
         </div>
         <div class="col-2">
-            Likes: <% out.println();//threadManager.getThread(1).getLikes());%>
+            Likes: <% out.println(threadManager.getThread(1).getLikes());%>
         </div>
         <div class="col-2">
             Posted: <% out.println(threadManager.getThread(1).getTimeAgo());%>
@@ -110,13 +110,7 @@
 </div>
 <!-- /.container -->
 
-<!-- Footer -->
-<footer class="py-5 bg-dark" >
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; GREENNIT 2020</p>
-    </div>
-    <!-- /.container -->
-</footer>
+
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>

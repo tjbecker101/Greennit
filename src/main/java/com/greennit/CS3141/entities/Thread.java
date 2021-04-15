@@ -26,6 +26,7 @@ public class Thread implements Serializable {
     private String author;
     private String content;
     private Timestamp creation_date;
+    private int likes;
 
     public Thread() {
     }
@@ -75,6 +76,10 @@ public class Thread implements Serializable {
     public void setCreation_date(Timestamp creation_date) {
         this.creation_date = creation_date;
     }
+
+    public int getLikes(){ return likes;}
+
+    public void setLikes(int likes){ this.likes = likes;}
 
     public String getTimeAgo(){
         long difference = System.currentTimeMillis() - this.creation_date.getTime();

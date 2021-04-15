@@ -5,12 +5,7 @@
     padding-bottom: 25px;
 }
 
-html, body {
+body {
     padding-top: 56px;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
