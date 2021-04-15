@@ -1,6 +1,12 @@
 <%@ page import="com.greennit.CS3141.entities.User" %>
 <%@ page import="com.greennit.CS3141.managers.PostManager" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.greennit.CS3141.entities.Subgreennit" %>
+<%@ page import="com.greennit.CS3141.managers.SubgreennitManager" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Comparator" %>
+<%@ page import="com.greennit.CS3141.webpage.SubgreennitComparator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
@@ -89,11 +95,27 @@
 
 
             <!-- Blog Post -->
+            <%
+                SubgreennitManager subreennitManager = new SubgreennitManager();
+                List<Subgreennit> subgreennitList = subreennitManager.getSubgreennits("");
+                Collections.sort(subgreennitList, new SubgreennitComparator());
+                for(Subgreennit subgreennit : subgreennitList) {
+                    out.print(
+                        "<div class=\"card mb-4\">\n" +
+                        "    <div class=\"card-body\">\n" +
+                        "        <h2 class=\"card-title\">" + subgreennit.getName() +"</h2>\n" +
+                        "        <p class=\"card-text\">" + subgreennit.getDescription() +"</p>\n" +
+                        "        <a href=\"subgreennit?id=" + subgreennit.getId() + "\" class=\"btn btn-primary\">Go To &rarr;</a>\n" +
+                        "    </div>\n" +
+                        "</div>");
+                }
+            %>
+
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="card-title">Post Title</h2>
                     <p class="card-text">Hello there</p>
-                    <a href="Thread_Layout.jsp" class="btn btn-primary">Read More &rarr;</a>
+                    <a href="thread?id=1" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                     Posted on <%
