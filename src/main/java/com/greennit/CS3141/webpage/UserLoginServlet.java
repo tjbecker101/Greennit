@@ -3,6 +3,7 @@ package com.greennit.CS3141.webpage;
 import com.greennit.CS3141.entities.User;
 
 import java.io.*;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -23,7 +24,11 @@ public class UserLoginServlet extends HttpServlet {
 
         UserDAO userDao = new UserDAO();
 
-        User user = userDao.checkLogin(username.toLowerCase(), password);
+        User user = null;
+        try {
+            user = userDao.checkLogin(username, userDao.SHA3_256(password));
+        } catch (NoSuchAlgorithmException ignored) {
+        }
         String destPage = "login.jsp";
 
         if (user != null) {

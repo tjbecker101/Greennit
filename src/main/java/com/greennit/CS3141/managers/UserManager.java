@@ -9,6 +9,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
+import java.util.List;
+
 public class UserManager {
 
     private SessionFactory sessionFactory;
@@ -77,14 +79,19 @@ public class UserManager {
     public User getUser(String username) throws IllegalArgumentException {
 
         session = sessionFactory.openSession();
-        User user = session.get(User.class, username);
+        Transaction transaction = session.beginTransaction();
+        String hql = "from User where :username = lower(username)";
+        Query<User> query = session.createQuery(hql);
+        query.setParameter("username", username);
+        List<User> userList = query.list();
 
-        if (user == null || user.getUsername().equals("")) { //Checks if the username exists or not
+        if (userList.size() < 1) { //Checks if the username exists or not
             throw new IllegalArgumentException("Username provided not valid.");
         }
 
+        transaction.commit();
         session.close();
-        return user;
+        return userList.get(0);
     }
 
     /**
