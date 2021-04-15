@@ -108,6 +108,7 @@
                 <p class="text-warning">${messagePasswordMismatch}</p>
             </div>
         </div>
+        <p class="text-warning">${messageFail}</p>
         <button type="submit" class="btn btn-dark">Sign up</button>
     </form>
 </div>
