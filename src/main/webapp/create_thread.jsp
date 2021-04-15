@@ -2,6 +2,7 @@
 <%@ page import="java.sql.Timestamp" %>
 <%@ page import="com.greennit.CS3141.managers.ThreadManager" %>
 <%@ page import="com.greennit.CS3141.entities.Thread" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
