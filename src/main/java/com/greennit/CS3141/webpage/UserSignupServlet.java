@@ -74,17 +74,17 @@ public class UserSignupServlet extends HttpServlet {
             isValid = false;
         } catch (IllegalArgumentException ignored) {
         }
-        if (!isValidEmail(email)) {
+        if (!isValidEmail(email) && isValid) {
             String messageEmail = "Invalid email address";
             request.setAttribute("messageEmail", messageEmail);
             isValid = false;
         }
-        if (!isValidPassword(password1)) {
+        if (!isValidPassword(password1) && isValid) {
             String messageBadPassword = "Invalid password parameters";
             request.setAttribute("messageBadPassword", messageBadPassword);
             isValid = false;
         }
-        if (!passwordsMatch(password1, password2)) {
+        if (!passwordsMatch(password1, password2) && isValid) {
             String messagePasswordMismatch = "Passwords do not match";
             request.setAttribute("messagePasswordMismatch", messagePasswordMismatch);
             isValid = false;
