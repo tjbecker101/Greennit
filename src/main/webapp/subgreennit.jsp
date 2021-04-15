@@ -96,7 +96,7 @@
                     </div>
                     <div class="card-footer">
                         <p class="my-auto text-wrap">Author: ${t.author}</p>
-                        <p class="my-auto text-wrap">Posted on: ${t.creation_date}</p>
+                        <p class="my-auto text-wrap">Posted ${t.timeAgo}</p>
                     </div>
                 </div>
                 <br>

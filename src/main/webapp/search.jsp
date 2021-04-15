@@ -102,7 +102,7 @@
                     </div>
                     <div class="card-footer">
                         <p class="my-auto">Author: ${thread.author}</p>
-                        <p class="my-auto">Posted on: ${thread.creation_date}</p>
+                        <p class="my-auto">Posted ${thread.timeAgo}</p>
                     </div>
                 </div>
                 <br>
