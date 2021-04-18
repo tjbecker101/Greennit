@@ -86,17 +86,17 @@
             <c:if test="${empty threadsInSubgreennit}">
                 <p class="my-auto">No posts have been created yet.</p>
             </c:if>
-            <c:forEach items="${threadsInSubgreennit}" var="t">
+            <c:forEach items="${threadsInSubgreennit}" var="thread">
                 <div class="card">
                     <div class="card-header">
-                        <a href="#" class="card-link">${t.title}</a>
+                        <a href="thread?id=${thread.id}" class="card-link">${thread.title}</a>
                     </div>
                     <div class="card-body">
-                        <p class="my-auto text-wrap">${t.content}</p>
+                        <p class="my-auto text-wrap">${thread.content}</p>
                     </div>
                     <div class="card-footer">
-                        <p class="my-auto text-wrap">Author: ${t.author}</p>
-                        <p class="my-auto text-wrap">Posted ${t.timeAgo}</p>
+                        <p class="my-auto text-wrap">Author: ${thread.author}</p>
+                        <p class="my-auto text-wrap">Posted ${thread.timeAgo}</p>
                     </div>
                 </div>
                 <br>

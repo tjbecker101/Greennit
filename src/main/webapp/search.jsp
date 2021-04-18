@@ -95,7 +95,7 @@
             <c:forEach items="${threads}" var="thread">
                 <div class="card">
                     <div class="card-header">
-                        <a href="#" class="card-link">${thread.title}</a>
+                        <a href="thread?id=${thread.id}" class="card-link">${thread.title}</a>
                     </div>
                     <div class="card-body">
                         <p class="my-auto text-wrap">${thread.content}</p>

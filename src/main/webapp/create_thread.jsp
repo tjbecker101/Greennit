@@ -17,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Greennit</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -72,16 +72,19 @@
     <%-- Displays the Author, Likes, and Time Posted --%>
     <div class="card">
         <div class="card-header">
-            Create Post
+            Create Thread
         </div>
         <div class="card-body">
 
             <form action="${pageContext.request.contextPath}\create_thread" method="post">
-                <label for="title">Enter a Title</label>
-                <input class="form-control" name="title" size="30" placeholder="Post Title"/>
+                <label for="host">Enter the Subgreennit to Post In</label>
+                <input class="form-control" name="host" size="30" placeholder="Subgreennit Name"/>
 
-                <label for="content">Input the Content of the Post</label>
-                <input class="form-control" name="content" size="30" placeholder="Post Content"/>
+                <label for="title">Enter a Title</label>
+                <input class="form-control" name="title" size="30" placeholder="Thread Title"/>
+
+                <label for="content">Input the Content of the Thread</label>
+                <input class="form-control" name="content" size="30" placeholder="Thread Content"/>
 
                 <input type="hidden" name="author" value="${user.username}">
                 <input type="hidden" name="host" value="${thread.host}">
