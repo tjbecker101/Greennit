@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class ThreadServlet extends HttpServlet {
         } else {
             thread = threadManager.getThread(id);
             List<Post> posts = postManager.getPostsByThread(thread.getId());
-            request.setAttribute("currentThread", thread);
+            HttpSession session = request.getSession();
+            session.setAttribute("currentThread", thread);
             request.setAttribute("posts", posts);
             destPage = "thread.jsp?id=" + thread.getId();
         }
