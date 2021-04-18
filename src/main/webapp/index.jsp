@@ -70,7 +70,7 @@
                         <a class="nav-link" href="create_thread.jsp">Create Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">${user.username}</a>
+                        <a class="nav-link" href="account_details.jsp">${user.username}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout">Logout</a>
