@@ -41,7 +41,6 @@ public class ThreadCreationServlet extends HttpServlet {
         if(title.equals("")) {
             String message = "Please Include a title";
             request.setAttribute("message", message);
-            System.out.println("test1");
         }
         else if(content.equals("")){
             String message = "Please Include the Content of the Thread";

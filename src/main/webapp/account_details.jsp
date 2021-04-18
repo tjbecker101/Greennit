@@ -88,7 +88,7 @@
     <%-- Displays the Author, Likes, and Time Posted --%>
     <div class="card">
         <div class="card-header">
-            Edit Your Account
+            Edit Your Account <p class="text-warning">${message}</p>
         </div>
         <div class="card-body">
             <div class="row">
@@ -101,6 +101,7 @@
                 <div class="col-xl-auto">
                     <button type="button" id="change_password_button" class="btn btn-dark" onclick="showBox3()">Change Password</button>
                 </div>
+
             </div>
 
             <script>
@@ -129,9 +130,9 @@
                 <label for="content">Retype new Email</label>
                 <input class="form-control" name="new_email_2" size="30" placeholder="Retype New Email"/>
 
-                <input type="hidden" name="old_email" value="${user.email}">
+                <input type="hidden" name="username" value="${user.username}">
+                <input type="hidden" name="type" value="email">
 
-                <p class="text-warning">${message}</p><br>
                 <button type="submit" class="btn btn-dark" onclick="">Submit</button>
             </form>
 
@@ -140,8 +141,8 @@
                 <input class="form-control" name="new_username" size="30" placeholder="New Username"/>
 
                 <input type="hidden" name="old_username" value="${user.username}">
+                <input type="hidden" name="type" value="username">
 
-                <p class="text-warning">${message}</p><br>
                 <button type="submit" class="btn btn-dark" onclick="">Submit</button>
             </form>
 
@@ -155,10 +156,10 @@
                 <label for="content">Retype New Password</label>
                 <input class="form-control" name="new_pass_2" size="30" placeholder="Retype New Password"/>
 
-                <p class="text-warning">${message}</p><br>
+                <input type="hidden" name="type" value="password">
+
                 <button type="submit" class="btn btn-dark" onclick="">Submit</button>
             </form>
-
 
         </div>
     </div>
