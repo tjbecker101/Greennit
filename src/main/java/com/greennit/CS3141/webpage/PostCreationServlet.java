@@ -47,6 +47,8 @@ public class PostCreationServlet extends HttpServlet {
             postManager.createPost(hostThread, author, content);
             destPage = "thread?id="+hostThread;
             response.sendRedirect(destPage);
+            postManager.exit();
+            subgreennitManager.exit();
             return;
         }
 
