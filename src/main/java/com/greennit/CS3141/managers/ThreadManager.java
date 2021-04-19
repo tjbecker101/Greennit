@@ -125,7 +125,7 @@ public class ThreadManager {
     /**
      * Prototype method
      * Gets a list of threads given a host subgreennit.
-     * @param host_subgreenit   The filter to filter through the database with.
+     * @param title   The filter to filter through the database with.
      * @return                  A list of threads matching the host subgreennit.
      */
     public List<Thread> getThreadsByTitle(String title) {

@@ -3,6 +3,7 @@ package com.greennit.CS3141.webpage;
 
 import com.greennit.CS3141.entities.Post;
 import com.greennit.CS3141.managers.PostManager;
+import com.greennit.CS3141.managers.SubgreennitManager;
 import com.greennit.CS3141.managers.ThreadManager;
 import com.greennit.CS3141.entities.Thread;
 
@@ -27,6 +28,7 @@ public class ThreadServlet extends HttpServlet {
         throws ServletException, IOException {
         ThreadManager threadManager = new ThreadManager();
         PostManager postManager = new PostManager();
+        SubgreennitManager subgreennitManager = new SubgreennitManager();
         Thread thread;
         String destPage;
         int id = -1;
@@ -40,14 +42,18 @@ public class ThreadServlet extends HttpServlet {
         } else {
             thread = threadManager.getThread(id);
             List<Post> posts = postManager.getPostsByThread(thread.getId());
+            String hostName = subgreennitManager.getSubgreennit(thread.getHost()).getName();
             HttpSession session = request.getSession();
             session.setAttribute("currentThread", thread);
             request.setAttribute("posts", posts);
+            request.setAttribute("hostName", hostName);
             destPage = "thread.jsp?id=" + thread.getId();
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
         dispatcher.forward(request, response);
         threadManager.exit();
+        postManager.exit();
+        subgreennitManager.exit();
     }
 }

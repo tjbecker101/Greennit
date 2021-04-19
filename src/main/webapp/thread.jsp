@@ -76,8 +76,8 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="card">
-        <div class="card-header">
+    <div class="card" >
+        <div class="card-header" >
             <!-- Thread Title -->
             <h1 class="my-4">${currentThread.title}</h1>
         </div>
@@ -96,8 +96,11 @@
                 <div class="col-2">
                     Likes: ${currentThread.likes}
                 </div>
-                <div class="col-2">
+                <div class="col-4">
                     Posted ${currentThread.timeAgo}
+                </div>
+                <div class="col-4">
+                    g/${hostName}
                 </div>
             </div>
         </div>
@@ -109,7 +112,8 @@
             <h6>Comments: <p class="float-right">Comment on thread</p></h6>
         </div>
         <c:forEach items="${posts}" var="post">
-            <div class="card">
+            <br>
+            <div class="card" >
                 <div class="card-body">
                     <p>${post.content}</p>
                 </div>
@@ -121,8 +125,11 @@
                         <div class="col-2">
                             Likes: ${post.likes}
                         </div>
-                        <div class="col-2">
+                        <div class="col-4">
                             Posted ${post.timeAgo}
+                        </div>
+                        <div class="col-4">
+                            g/${hostName}
                         </div>
                     </div>
                 </div>
