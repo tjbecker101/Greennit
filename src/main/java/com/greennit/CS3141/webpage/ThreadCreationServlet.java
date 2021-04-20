@@ -55,8 +55,7 @@ public class ThreadCreationServlet extends HttpServlet {
             request.setAttribute("message", message);
         }else{
             int host = SGList.get(0).getId();
-            com.greennit.CS3141.entities.Thread newThread = threadManager.createThread(host, title, author, content, new Timestamp(System.currentTimeMillis()));
-            int newThreadID = newThread.getId();
+            threadManager.createThread(host, title, author, content, new Timestamp(System.currentTimeMillis()));
             String message = "Thread Posted!";
             request.setAttribute("message", message);
         }
