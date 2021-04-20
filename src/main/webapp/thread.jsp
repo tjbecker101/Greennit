@@ -8,7 +8,7 @@
 <%@ page import="com.greennit.CS3141.managers.ThreadManager" %>
 <%@ page import="com.greennit.CS3141.entities.Post" %>
 <%@ page import="java.util.List" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,8 +77,8 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="card" >
-        <div class="card-header" >
+    <div class="card">
+        <div class="card-header">
             <!-- Thread Title -->
             <h1 class="my-4">${currentThread.title}</h1>
         </div>
@@ -114,7 +114,7 @@
         </div>
         <c:forEach items="${posts}" var="post">
             <br>
-            <div class="card" >
+            <div class="card">
                 <div class="card-body">
                     <p>${post.content}</p>
                 </div>
@@ -133,6 +133,15 @@
                             g/${hostName}
                         </div>
                     </div>
+                    <c:if test="${post.author.equals(user.username)}">
+                            <form action="${pageContext.request.contextPath}/deletePosts" id="delete_post"
+                                  method="get">
+                                <input type="hidden" name="post_id" value="${post.id}">
+                                <input type="hidden" name="thread_id" value="${post.host_thread}">
+                                <button type="submit" class="btn btn-dark" onclick="">Delete Post</button>
+                            </form>
+                    </c:if>
+
                 </div>
             </div>
         </c:forEach>
