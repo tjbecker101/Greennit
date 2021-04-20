@@ -110,7 +110,7 @@
     <br>
     <div class="card">
         <div class="card-header">
-            <h6>Comments: <p class="float-right">Comment on thread</p></h6>
+            <h6>Comments: <a href="create_post.jsp" class="float-right">Comment on thread</a></h6>
         </div>
         <c:forEach items="${posts}" var="post">
             <br>
