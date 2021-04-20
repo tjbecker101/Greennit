@@ -107,6 +107,26 @@ public class PostManager {
     }
 
     /**
+     * Updates a post's likes in the database.
+     * @param id        The ID of the post.
+     * @param likes   The new likes for the post.
+     */
+    public void updatePostLikes(int id, int likes) {
+        Post post = getPost(id);
+
+        post.setLikes(likes);
+
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.update(post);
+
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
+    /**
      * Prototype method
      * Gets a list of threads given a host thread.
      * @param host_thread   The thread where all the posts are located at.

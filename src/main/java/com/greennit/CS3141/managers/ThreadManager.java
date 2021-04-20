@@ -173,6 +173,33 @@ public class ThreadManager {
     }
 
     /**
+     * Updates a thread's likes in the database.
+     * @param id         The ID of the thread.
+     * @param likes           The new likes for the thread.
+     */
+    public void updateThreadLikes(int id, int likes) {
+        try {
+            Thread thread = getThread(id);
+
+            thread.setLikes(likes);
+
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+
+            session.update(thread);
+
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+            if (session != null) {
+                session.getTransaction().rollback();
+                session.close();
+            }
+        }
+
+    }
+
+    /**
      * Deletes a thread from the database.
      * @param id    The ID of the thread.
      */

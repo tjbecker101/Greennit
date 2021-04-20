@@ -2,10 +2,12 @@ package com.greennit.CS3141.webpage;
 
 
 import com.greennit.CS3141.entities.Post;
+import com.greennit.CS3141.entities.User;
 import com.greennit.CS3141.managers.PostManager;
 import com.greennit.CS3141.managers.SubgreennitManager;
 import com.greennit.CS3141.managers.ThreadManager;
 import com.greennit.CS3141.entities.Thread;
+import com.greennit.CS3141.managers.UserManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +31,9 @@ public class ThreadServlet extends HttpServlet {
         ThreadManager threadManager = new ThreadManager();
         PostManager postManager = new PostManager();
         SubgreennitManager subgreennitManager = new SubgreennitManager();
+        UserManager userManager = new UserManager();
         Thread thread;
+        User postedBy;
         String destPage;
         int id = -1;
         try {
@@ -41,10 +45,12 @@ public class ThreadServlet extends HttpServlet {
             destPage = "index.jsp";
         } else {
             thread = threadManager.getThread(id);
+            postedBy = userManager.getUser(thread.getAuthor());
             List<Post> posts = postManager.getPostsByThread(thread.getId());
             String hostName = subgreennitManager.getSubgreennit(thread.getHost()).getName();
             HttpSession session = request.getSession();
             session.setAttribute("currentThread", thread);
+            session.setAttribute("postedBy", postedBy);
             request.setAttribute("posts", posts);
             request.setAttribute("hostName", hostName);
             destPage = "thread.jsp?id=" + thread.getId();

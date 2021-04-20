@@ -95,7 +95,7 @@
                     Author: ${currentThread.author}
                 </div>
                 <div class="col-2">
-                    Likes: ${currentThread.likes}
+                    Karma: ${postedBy.karma}
                 </div>
                 <div class="col-4">
                     Posted ${currentThread.timeAgo}
@@ -103,6 +103,25 @@
                 <div class="col-4">
                     g/${hostName}
                 </div>
+
+            </div>
+            <div class="row">
+                |<form action="${pageContext.request.contextPath}/thread_voting" id="like" method="get">
+                    <input type="hidden" name="username" value="${user.username}">
+                    <input type="hidden" name="amount" value="1">
+                    <input type="hidden" name="id" value="${currentThread.id}">
+
+                    <button type="submit" class="btn btn-dark" onclick="">^</button>
+                </form>
+                | ${currentThread.getLikes()} |
+                <form action="${pageContext.request.contextPath}/thread_voting" id="dislike" method="get">
+                    <input type="hidden" name="username" value="${user.username}">
+                    <input type="hidden" name="amount" value="-1">
+                    <input type="hidden" name="id" value="${currentThread.id}">
+
+                    <button type="submit" class="btn btn-dark" onclick="">v</button>
+                </form>|
+                <p class="text-warning">${message}</p><br>
             </div>
         </div>
     </div>
@@ -123,15 +142,32 @@
                         <div class="col-2">
                             Author: ${post.author}
                         </div>
-                        <div class="col-2">
-                            Likes: ${post.likes}
-                        </div>
                         <div class="col-4">
                             Posted ${post.timeAgo}
                         </div>
                         <div class="col-4">
                             g/${hostName}
                         </div>
+                    </div>
+                    <div class="row">
+                        |<form action="${pageContext.request.contextPath}/post_voting" id="like" method="get">
+                        <input type="hidden" name="username" value="${user.username}">
+                        <input type="hidden" name="postAmount" value="1">
+                        <input type="hidden" name="postId" value="${post.id}">
+                        <input type="hidden" name="threadId" value="${currentThread.id}">
+
+                        <button type="submit" class="btn btn-dark" onclick="">^</button>
+                    </form>
+                        | ${post.getLikes()} |
+                        <form action="${pageContext.request.contextPath}/post_voting" id="dislike" method="get">
+                            <input type="hidden" name="username" value="${user.username}">
+                            <input type="hidden" name="postAmount" value="-1">
+                            <input type="hidden" name="postId" value="${post.id}">
+                            <input type="hidden" name="threadId" value="${currentThread.id}">
+
+                            <button type="submit" class="btn btn-dark" onclick="">v</button>
+                        </form>|
+                        <p class="text-warning">${message}</p><br>
                     </div>
                     <c:if test="${post.author.equals(user.username)}">
                             <form action="${pageContext.request.contextPath}/deletePosts" id="delete_post"
