@@ -48,7 +48,7 @@
             <ul class="navbar-nav ml-auto">
                 <c:if test="${!empty user}">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">${user.username}</a>
+                        <a class="nav-link" href="account_details.jsp">${user.username}</a>
                     </li>
                 </c:if>
                 <li class="nav-item active">
