@@ -156,6 +156,7 @@
                 <label for="content">Retype New Password</label>
                 <input class="form-control" name="new_pass_2" size="30" placeholder="Retype New Password"/>
 
+                <input type="hidden" name="username" value="${user.username}">
                 <input type="hidden" name="type" value="password">
 
                 <button type="submit" class="btn btn-dark" onclick="">Submit</button>
