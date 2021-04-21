@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/deletePosts")
-public class PostDeletionServlet extends HttpServlet {
+@WebServlet("/edit_posts")
+public class PostEditingServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    public PostDeletionServlet() {
+    public PostEditingServlet() {
         super();
     }
 
@@ -29,7 +29,8 @@ public class PostDeletionServlet extends HttpServlet {
 
         String id = request.getParameter("post_id"); //Gets the post id
         String threadId = request.getParameter("thread_id"); //Gets the thread id for redirection
-        String message = "Error"; //Prints a message back to the user
+        String newContent = request.getParameter("new_content");
+        String message; //Prints a message back to the user
         String destPage = "index.jsp"; //Used to redirect the user
 
         if(id.equals("")){ //Checks if the post has an id
@@ -40,10 +41,10 @@ public class PostDeletionServlet extends HttpServlet {
             try{
                 Thread thread = threadManager.getThread(Integer.parseInt(threadId)); //Gets the thread the post is in
                 destPage = "thread?id=" + thread.getId(); //Assigns thread to the destPage
-                postManager.deletePost(Integer.parseInt(id)); //Deletes the post
+                postManager.updatePostContent(Integer.parseInt(id), newContent); //edits the post
                 message = "";
             }catch (IllegalArgumentException ex){
-                message = "Deletion Failed";
+                message = "Edit Failed";
             }
         }
         request.setAttribute("message", message);

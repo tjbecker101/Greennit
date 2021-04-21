@@ -49,7 +49,7 @@
                         <a class="nav-link" href="login.jsp">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="signup.jsp">Sign up</a>
+                        <a class="nav-link" href="signup.jsp">Register</a>
                     </li>
                 </c:if>
                 <c:if test="${not empty user}">
