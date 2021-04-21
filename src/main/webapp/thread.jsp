@@ -92,7 +92,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-2">
-                    Author: ${currentThread.author}
+                    Author: <a href="view_profile?u=${currentThread.author}" class="card-link">${currentThread.author} </a>
                 </div>
                 <div class="col-2">
                     Karma: ${postedBy.karma}
@@ -111,7 +111,7 @@
                     <input type="hidden" name="amount" value="1">
                     <input type="hidden" name="id" value="${currentThread.id}">
 
-                    <button type="submit" class="btn btn-dark" onclick="">^</button>
+                    <button type="submit" class="btn btn-dark btn-sm" onclick="">^</button>
                 </form>
                 | ${currentThread.getLikes()} |
                 <form action="${pageContext.request.contextPath}/thread_voting" id="dislike" method="get">
@@ -119,7 +119,7 @@
                     <input type="hidden" name="amount" value="-1">
                     <input type="hidden" name="id" value="${currentThread.id}">
 
-                    <button type="submit" class="btn btn-dark" onclick="">v</button>
+                    <button type="submit" class="btn btn-dark btn-sm" onclick="">v</button>
                 </form>|
                 <p class="text-warning">${message}</p><br>
             </div>
@@ -140,7 +140,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-2">
-                            Author: ${post.author}
+                            Author: <a href="view_profile?u=${currentThread.author}" class="card-link">${currentThread.author} </a>
                         </div>
                         <div class="col-4">
                             Posted ${post.timeAgo}
@@ -156,7 +156,7 @@
                         <input type="hidden" name="postId" value="${post.id}">
                         <input type="hidden" name="threadId" value="${currentThread.id}">
 
-                        <button type="submit" class="btn btn-dark" onclick="">^</button>
+                        <button type="submit" class="btn btn-dark btn-sm" onclick="">^</button>
                     </form>
                         | ${post.getLikes()} |
                         <form action="${pageContext.request.contextPath}/post_voting" id="dislike" method="get">
@@ -165,7 +165,7 @@
                             <input type="hidden" name="postId" value="${post.id}">
                             <input type="hidden" name="threadId" value="${currentThread.id}">
 
-                            <button type="submit" class="btn btn-dark" onclick="">v</button>
+                            <button type="submit" class="btn btn-dark btn-sm" onclick="">v</button>
                         </form>|
                         <p class="text-warning">${message}</p><br>
                     </div>

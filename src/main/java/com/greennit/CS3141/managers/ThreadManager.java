@@ -100,7 +100,6 @@ public class ThreadManager {
     }
 
     /**
-     * Prototype method
      * Gets a list of threads given a host subgreennit.
      * @param host_subgreenit   The filter to filter through the database with.
      * @return                  A list of threads matching the host subgreennit.
@@ -123,10 +122,9 @@ public class ThreadManager {
     }
 
     /**
-     * Prototype method
-     * Gets a list of threads given a host subgreennit.
-     * @param title   The filter to filter through the database with.
-     * @return                  A list of threads matching the host subgreennit.
+     * Gets a list of threads given a title.
+     * @param title   The title of the thread to filter through the database with.
+     * @return        A list of threads matching the title.
      */
     public List<Thread> getThreadsByTitle(String title) {
         try {
@@ -135,6 +133,28 @@ public class ThreadManager {
             String hql = "from Thread where title like :condition";
             Query<Thread> query = session.createQuery(hql);
             query.setParameter("condition", "%" + title + "%");
+
+            return query.list();
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    /**
+     * Gets a list of threads given an author.
+     * @param username  The author to filter through the database with.
+     * @return          A list of threads matching the author.
+     */
+    public List<Thread> getThreadsByUser(String username) {
+        try {
+            session = sessionFactory.openSession();
+
+            String hql = "from Thread where author = :condition";
+            Query<Thread> query = session.createQuery(hql);
+            query.setParameter("condition", username );
 
             return query.list();
         }

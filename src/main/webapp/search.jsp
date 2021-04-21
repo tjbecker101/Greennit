@@ -101,7 +101,7 @@
                         <p class="my-auto text-wrap">${thread.content}</p>
                     </div>
                     <div class="card-footer">
-                        <p class="my-auto">Author: ${thread.author}</p>
+                        Author: <a href="view_profile?u=${thread.author}" class="card-link">${thread.author} </a>
                         <p class="my-auto">Posted ${thread.timeAgo}</p>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 package com.greennit.CS3141.managers;
 
 import com.greennit.CS3141.entities.Post;
+import com.greennit.CS3141.entities.Thread;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -142,6 +143,28 @@ public class PostManager {
 
             return query.list();
         } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    /**
+     * Gets a list of posts given an author.
+     * @param username  The author to filter through the database with.
+     * @return          A list of posts matching the author.
+     */
+    public List<Post> getPostsByUser(String username) {
+        try {
+            session = sessionFactory.openSession();
+
+            String hql = "from Post where author = :condition";
+            Query<Post> query = session.createQuery(hql);
+            query.setParameter("condition", username);
+
+            return query.list();
+        }
+        finally {
             if (session != null) {
                 session.close();
             }
