@@ -40,6 +40,7 @@
     function showPostBox(post) {
         document.getElementById("edit_post" + post).style.display = 'block';
     }
+
     function showThreadBox() {
         document.getElementById("edit_thread").style.display = 'block';
     }
@@ -102,7 +103,8 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-2">
-                    Author: <a href="view_profile?u=${currentThread.author}" class="card-link">${currentThread.author} </a>
+                    Author: <a href="view_profile?u=${currentThread.author}"
+                               class="card-link">${currentThread.author} </a>
                 </div>
                 <div class="col-2">
                     Karma: ${postedBy.karma}
@@ -116,7 +118,8 @@
 
             </div>
             <div class="row">
-                |<form action="${pageContext.request.contextPath}/thread_voting" id="threadLike" method="get">
+                |
+                <form action="${pageContext.request.contextPath}/thread_voting" id="threadLike" method="get">
                     <input type="hidden" name="username" value="${user.username}">
                     <input type="hidden" name="amount" value="1">
                     <input type="hidden" name="id" value="${currentThread.id}">
@@ -132,15 +135,19 @@
                     <input type="hidden" name="id" value="${currentThread.id}">
 
                     <button type="submit" class="btn btn-dark btn-sm" onclick="">v</button>
-                </form>|
+                </form>
+                |
             </div>
             <c:if test="${currentThread.author.equals(user.username)}">
                 <div class="row">
                     <div class="col-2">
-                        <button type="button" id="edit_thread_button" class="btn btn-dark" onclick="showThreadBox()">Edit Thread</button>
+                        <button type="button" id="edit_thread_button" class="btn btn-dark" onclick="showThreadBox()">
+                            Edit Thread
+                        </button>
                     </div>
                     <div class="col-2">
-                        <form action="${pageContext.request.contextPath}/edit_threads" id="edit_thread" style="display: none" method="get">
+                        <form action="${pageContext.request.contextPath}/edit_threads" id="edit_thread"
+                              style="display: none" method="get">
                             <input type="hidden" name="id" value="${currentThread.id}">
 
                             <label for="content">Enter new Content</label>
@@ -179,7 +186,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        |<form action="${pageContext.request.contextPath}/post_voting" id="postLike" method="get">
+                        |
+                        <form action="${pageContext.request.contextPath}/post_voting" id="postLike" method="get">
                             <input type="hidden" name="username" value="${user.username}">
                             <input type="hidden" name="postAmount" value="1">
                             <input type="hidden" name="postId" value="${post.id}">
@@ -197,33 +205,39 @@
                             <input type="hidden" name="threadId" value="${currentThread.id}">
 
                             <button type="submit" class="btn btn-dark btn-sm" onclick="">v</button>
-                        </form>|
+                        </form>
+                        |
                     </div>
                     <c:if test="${post.author.equals(user.username)}">
-                        <div class="row">
-                            <div class="col-2">
-                                <form action="${pageContext.request.contextPath}/deletePosts" id="delete_post"
-                                      method="get">
-                                    <input type="hidden" name="post_id" value="${post.id}">
-                                    <input type="hidden" name="thread_id" value="${post.host_thread}">
-                                    <button type="submit" class="btn btn-dark" onclick="">Delete Post</button>
-                                </form>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" id="edit_post_button" class="btn btn-dark" onclick="showPostBox(${post.id})">Edit Post</button>
-                            </div>
-                            <div class="col-2">
-                                <form action="${pageContext.request.contextPath}/edit_posts" id="edit_post${post.id}" style="display: none" method="get">
-                                    <input type="hidden" name="post_id" value="${post.id}">
-                                    <input type="hidden" name="thread_id" value="${post.host_thread}">
-
-                                    <label for="content">Enter new Content</label>
-                                    <input class="form-control" name="new_content" size="20" value="${post.content}"/>
-
-                                    <button type="submit" class="btn btn-dark" onclick="">Submit</button>
-                                </form>
-                            </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <button type="button" id="edit_post_button" class="btn btn-dark"
+                                    onclick="showPostBox(${post.id})">Edit Post
+                            </button>
                         </div>
+                        <div class="col-2">
+                            <form action="${pageContext.request.contextPath}/edit_posts" id="edit_post${post.id}"
+                                  style="display: none" method="get">
+                                <input type="hidden" name="post_id" value="${post.id}">
+                                <input type="hidden" name="thread_id" value="${post.host_thread}">
+
+                                <label for="content">Enter new Content</label>
+                                <input class="form-control" name="new_content" size="20" value="${post.content}"/>
+
+                                <button type="submit" class="btn btn-dark" onclick="">Submit</button>
+                            </form>
+                        </div>
+                        </c:if>
+                        <c:if test="${post.author.equals(user.username) || user.permission >= 2}">
+                        <div class="col-2">
+                            <form action="${pageContext.request.contextPath}/deletePosts" id="delete_post"
+                                  method="get">
+                                <input type="hidden" name="post_id" value="${post.id}">
+                                <input type="hidden" name="thread_id" value="${post.host_thread}">
+                                <button type="submit" class="btn btn-dark" onclick="">Delete Post</button>
+                            </form>
+                        </div>
+                    </div>
                     </c:if>
 
                 </div>
