@@ -76,16 +76,24 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <p class="my-auto">g/${currentSubgreennit.name}</p>
+                    <h6 class="my-auto">g/${currentSubgreennit.name}
+                        <c:if test="${user.permission == 3}">
+                            <a href="delete_subgreennit?g=${currentSubgreennit.id}" class="card-link float-right" style="color:red">Delete subgreennit</a>
+                        </c:if>
+                    </h6>
                 </div>
                 <div class="card-body">
-                    <p class="my-auto">ID: ${currentSubgreennit.id}</p>
                     <p class="my-auto">Description: ${currentSubgreennit.description}</p>
                 </div>
             </div>
             <br>
             <c:if test="${empty threadsInSubgreennit}">
                 <p class="my-auto">No posts have been created yet.</p>
+            </c:if>
+            <c:if test="${!empty threadsInSubgreennit}">
+                <br>
+                <h6 class="my-auto">Threads: </h6>
+                <br>
             </c:if>
             <c:forEach items="${threadsInSubgreennit}" var="thread">
                 <div class="card">
