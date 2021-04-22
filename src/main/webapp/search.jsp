@@ -58,7 +58,7 @@
                         <a class="nav-link" href="create_thread.jsp">Create Thread</a>
                     </li>
                     <li class="nav-item">
-                        <a href="create_subgreennit.jsp">Create Subgreennit</a>
+                        <a class="nav-link" href="create_subgreennit.jsp">Create Subgreennit</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="account_details.jsp">${user.username}</a>

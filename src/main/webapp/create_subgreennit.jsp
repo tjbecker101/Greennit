@@ -57,7 +57,7 @@
                         <a class="nav-link" href="create_thread.jsp">Create Thread</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="create_subgreennit.jsp">Create Subgreennit</a>
+                        <a class="nav-link" href="create_subgreennit.jsp">Create Subgreennit</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="account_details.jsp">${user.username}</a>
@@ -85,9 +85,10 @@
             <form action="create_subgreennit" method="post">
                 <label for="name">Enter The Subgreennit Name</label>
                 <input class="form-control" name="name" size="30" placeholder="Subgreennit Name"/>
+                <br>
 
                 <label for="description">Enter A Description</label>
-                <textarea class="form-control" name="description" size="30" placeholder="Description"/>
+                <textarea class="form-control" name="description" size="30" placeholder="Description"></textarea>
 
                 <p class="text-warning">${message}</p><br>
                 <button type="submit" class="btn btn-dark" onclick="">Create Thread</button>
