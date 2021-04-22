@@ -53,10 +53,10 @@
                     </li>
                 </c:if>
                 <c:if test="${not empty user}">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="create_thread.jsp">Create Thread</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a href="create_subgreennit.jsp">Create Subgreennit</a>
                     </li>
                     <li class="nav-item">
@@ -82,18 +82,12 @@
         </div>
         <div class="card-body">
 
-            <form action="${pageContext.request.contextPath}\create_thread" method="post">
-                <label for="host">Enter the Subgreennit to Post In</label>
-                <input class="form-control" name="host" size="30" placeholder="Subgreennit Name"/>
+            <form action="create_subgreennit" method="post">
+                <label for="name">Enter The Subgreennit Name</label>
+                <input class="form-control" name="name" size="30" placeholder="Subgreennit Name"/>
 
-                <label for="title">Enter a Title</label>
-                <input class="form-control" name="title" size="30" placeholder="Thread Title"/>
-
-                <label for="content">Input the Content of the Thread</label>
-                <input class="form-control" name="content" size="30" placeholder="Thread Content"/>
-
-                <input type="hidden" name="author" value="${user.username}">
-                <input type="hidden" name="host" value="${thread.host}">
+                <label for="description">Enter A Description</label>
+                <textarea class="form-control" name="description" size="30" placeholder="Description"/>
 
                 <p class="text-warning">${message}</p><br>
                 <button type="submit" class="btn btn-dark" onclick="">Create Thread</button>
