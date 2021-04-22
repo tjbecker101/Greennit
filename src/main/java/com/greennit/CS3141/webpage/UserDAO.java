@@ -28,8 +28,8 @@ public class UserDAO {
         }
     }
 
-    public String SHA3_256(String text) throws NoSuchAlgorithmException {
-        final MessageDigest digest = MessageDigest.getInstance("SHA3-256");
+    public String SHA_256(String text) throws NoSuchAlgorithmException {
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
         final byte[] hashbytes = digest.digest(
                 text.getBytes(StandardCharsets.UTF_8));
         return bytesToHex(hashbytes);

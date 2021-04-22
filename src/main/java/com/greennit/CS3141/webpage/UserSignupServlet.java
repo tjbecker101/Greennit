@@ -3,7 +3,6 @@ package com.greennit.CS3141.webpage;
 import com.greennit.CS3141.managers.UserManager;
 
 import java.io.*;
-import java.security.NoSuchAlgorithmException;
 import java.util.regex.Pattern;
 
 import javax.servlet.*;
@@ -94,8 +93,8 @@ public class UserSignupServlet extends HttpServlet {
             destPage = "index.jsp";
             HttpSession session = request.getSession();
             try {
-                session.setAttribute("user", manager.createUser(username, userDAO.SHA3_256(password1), email));
-            } catch (NoSuchAlgorithmException e) {
+                session.setAttribute("user", manager.createUser(username, userDAO.SHA_256(password1), email));
+            } catch (Exception ignored) {
                 String messageFail = "Account creation failed. Try again";
                 request.setAttribute("messageFail", messageFail);
                 destPage = "signup.jsp";

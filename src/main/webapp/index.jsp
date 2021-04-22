@@ -92,7 +92,7 @@
         <div class="col-md-8">
 
             <h1 class="my-4">GREENNIT
-                <small><br>Your HUB for unnecessarily green forums</small>
+                <small><br>Your HUB for forums that were meant to be green, but aren't.</small>
             </h1>
 
 

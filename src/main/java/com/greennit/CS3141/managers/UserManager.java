@@ -80,7 +80,7 @@ public class UserManager {
 
         session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        String hql = "from User where :username = lower(username)";
+        String hql = "from User user where lower(user.username) = :username";
         Query<User> query = session.createQuery(hql);
         query.setParameter("username", username);
         List<User> userList = query.list();

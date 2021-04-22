@@ -87,8 +87,8 @@ public class AccountDetailsServlet extends HttpServlet {
             } else {
                 try {
                     UserDAO userDAO = new UserDAO();
-                    if (userDAO.checkLogin(username, userDAO.SHA3_256(oldPassword)) != null) {
-                        userManager.updatePassword(username, userDAO.SHA3_256(newPassword1));
+                    if (userDAO.checkLogin(username, userDAO.SHA_256(oldPassword)) != null) {
+                        userManager.updatePassword(username, userDAO.SHA_256(newPassword1));
                         User user = userManager.getUser(username);
                         request.setAttribute("user", user);
                         message = "Password Change Successful";
