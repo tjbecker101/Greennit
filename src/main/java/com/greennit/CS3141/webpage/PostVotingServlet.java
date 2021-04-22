@@ -54,7 +54,6 @@ public class PostVotingServlet extends HttpServlet {
                     message = "Already Voted!";
                 } else {
                     message = "";
-                    User user = userManager.getUser(strUser);
                     User author = userManager.getUser(post.getAuthor());
                     postManager.updatePostLikes(post.getId(), post.getLikes() + amount);
                     userManager.updateKarma(author.getUsername(), author.getKarma() + amount);
