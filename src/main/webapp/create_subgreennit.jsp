@@ -91,7 +91,7 @@
                 <textarea class="form-control" name="description" size="30" placeholder="Description"></textarea>
 
                 <p class="text-warning">${message}</p><br>
-                <button type="submit" class="btn btn-dark" onclick="">Create Thread</button>
+                <button type="submit" class="btn btn-dark" onclick="">Create Subgreennit</button>
             </form>
 
 
