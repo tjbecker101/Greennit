@@ -39,7 +39,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="index.jsp">Home
                         <span class="sr-only">(current)</span>
                     </a>
@@ -49,10 +49,13 @@
                         <a class="nav-link" href="login.jsp">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="signup.jsp">Sign up</a>
+                        <a class="nav-link" href="signup.jsp">Register</a>
                     </li>
                 </c:if>
                 <c:if test="${not empty user}">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="create_thread.jsp">Create Thread</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="account_details.jsp">${user.username}</a>
                     </li>
