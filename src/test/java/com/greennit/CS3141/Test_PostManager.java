@@ -37,12 +37,11 @@ public class Test_PostManager {
         assertEquals("contentTest", post.getContent());
         //assertEquals(timestamp, post.getTime_posted()); //Returns wrong time, off by 3 hours
         assertEquals(15, post.getLikes());
-        assertEquals(4, post.getParent_id());
     }
 
     @Test
     public void createAndDeletePost(){
-        post = manager.createPost(1, "qcross", "createPostTest", 4);
+        post = manager.createPost(1, "qcross", "createPostTest");
         assertEquals(post.getContent(), "createPostTest");
         manager.deletePost(post.getId());
         try{
@@ -70,7 +69,6 @@ public class Test_PostManager {
             Assertions.assertEquals("contentTest", post.getContent());
             Assertions.assertEquals(15, post.getLikes());
             Assertions.assertEquals("2021-04-04 14:59:17.0", post.getTime_posted().toString());
-            Assertions.assertEquals(4, post.getParent_id());
 
         }
     }
